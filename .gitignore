@@ -1,35 +1,56 @@
-# dependencies (bun install)
-node_modules
+# See https://nextjs.org/docs/app/api-reference/config/next-config-js/distDir
 
-# output
-out
-dist
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+/dist
 *.tgz
 
-# code coverage
-coverage
-*.lcov
+# misc
+.DS_Store
+*.pem
 
-# logs
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+bun-debug.log*
 logs
-_.log
-report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
+*.log
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+# env files
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# local credentials
 google-calendar.json
 
-# caches
-.eslintcache
-.cache
-*.tsbuildinfo
-
-# IntelliJ based IDEs
+# editor
 .idea
-
-# Finder (MacOS) folder config
-.DS_Store
+.vscode
+.cursor
