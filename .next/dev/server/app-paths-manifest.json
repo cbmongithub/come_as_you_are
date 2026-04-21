@@ -1,0 +1,8 @@
+{
+  "/api/booking/availability/route": "app/api/booking/availability/route.js",
+  "/api/booking/checkout/route": "app/api/booking/checkout/route.js",
+  "/api/booking/confirm/route": "app/api/booking/confirm/route.js",
+  "/book/page": "app/book/page.js",
+  "/book/success/page": "app/book/success/page.js",
+  "/page": "app/page.js"
+}
