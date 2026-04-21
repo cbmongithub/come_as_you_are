@@ -1,4 +1,7 @@
-import { getBookingProduct, getBookingProductsWithConfig } from "@/lib/booking-products";
+import {
+  getBookingProduct,
+  getBookingProductsWithConfig,
+} from "@/lib/booking-products";
 
 interface StripeCheckoutSession {
   id: string;
@@ -48,13 +51,16 @@ export async function createBookingCheckoutSession(
 
   const priceId = process.env[product.envKey];
 
+  const submitType =
+    product.id === "weekly-support-monthly" ? "subscribe" : "book";
+
   if (!priceId) {
     throw new Error(`Missing ${product.envKey}.`);
   }
 
   const body = new URLSearchParams({
     mode: product.checkoutMode,
-    submit_type: "book",
+    submit_type: submitType,
     "automatic_tax[enabled]": "true",
     "line_items[0][price]": priceId,
     "line_items[0][quantity]": "1",

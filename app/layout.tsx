@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Cormorant_Infant, DM_Sans } from "next/font/google";
+import {
+  Cormorant_Garamond,
+  Cormorant_Infant,
+  DM_Sans,
+} from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -47,6 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${cormorantGaramond.variable} ${cormorantInfant.variable} ${dmSans.variable}`}
     >
       <body>

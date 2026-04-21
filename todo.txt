@@ -8,3 +8,4 @@
 - Subscriptions later via stripe https://docs.stripe.com/billing/quickstart?client=react&lang=node
 - Set up usage based. When a google meet is occurring, the minutes will be converted to usage based minutes, 1 hr 23 minutes 30 seconds for example,
 paid every second of the meeting. We can do a function to convert the minutes if needed, but maybe it's available already from google in seconds or ms here is the stripe doc for it: https://dashboard.stripe.com/acct_1Suhj1GtwsfnqllU/meters?status=active
+- Change the booking ui to use steps? change the language when the user creates the payment the hero text above it
