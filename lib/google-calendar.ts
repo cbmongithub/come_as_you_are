@@ -1,6 +1,4 @@
 import { createSign } from "node:crypto";
-import { readFile } from "node:fs/promises";
-import path from "node:path";
 
 interface GoogleServiceAccountCredentials {
   client_email: string;
@@ -24,10 +22,18 @@ function normalizePrivateKey(privateKey: string) {
   return privateKey.replace(/\\n/g, "\n");
 }
 
-async function loadCredentialsFromFile(filePath: string) {
+async function loadCredentialsFromDevFile(filePath: string) {
+  if (process.env.NODE_ENV === "production") {
+    return null;
+  }
+
+  const [{ readFile }, path] = await Promise.all([
+    import("node:fs/promises"),
+    import("node:path"),
+  ]);
   const absolutePath = path.isAbsolute(filePath)
     ? filePath
-    : path.join(process.cwd(), filePath);
+    : path.join(/* turbopackIgnore: true */ process.cwd(), filePath);
   const raw = await readFile(absolutePath, "utf8");
   const parsed = JSON.parse(raw) as Partial<GoogleServiceAccountCredentials>;
 
@@ -42,31 +48,26 @@ async function loadCredentialsFromFile(filePath: string) {
 }
 
 async function loadGoogleServiceAccountCredentials() {
-  const keyFile = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_FILE;
-
-  if (keyFile) {
-    return loadCredentialsFromFile(keyFile);
-  }
-
-  try {
-    return await loadCredentialsFromFile("google-calendar.json");
-  } catch {
-    // Fall back to env vars for hosted deployments where key files are awkward.
-  }
-
   const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const privateKey = process.env.GOOGLE_PRIVATE_KEY;
 
-  if (!clientEmail || !privateKey) {
-    throw new Error(
-      "Missing Google credentials. Set GOOGLE_SERVICE_ACCOUNT_KEY_FILE or GOOGLE_SERVICE_ACCOUNT_EMAIL and GOOGLE_PRIVATE_KEY.",
-    );
+  if (clientEmail && privateKey) {
+    return {
+      client_email: clientEmail,
+      private_key: privateKey,
+    };
   }
 
-  return {
-    client_email: clientEmail,
-    private_key: privateKey,
-  };
+  const keyFile = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_FILE || "google-calendar.json";
+  const devFileCredentials = await loadCredentialsFromDevFile(keyFile);
+
+  if (devFileCredentials) {
+    return devFileCredentials;
+  }
+
+  throw new Error(
+    "Missing Google credentials. Set GOOGLE_SERVICE_ACCOUNT_EMAIL and GOOGLE_PRIVATE_KEY.",
+  );
 }
 
 async function getGoogleAccessToken() {

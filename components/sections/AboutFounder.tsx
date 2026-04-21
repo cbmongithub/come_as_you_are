@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ashleyPortrait from "@/app/assets/img/ashley_2.JPG";
+import ashleyPortrait from "@/app/assets/img/ashley.jpg";
 
 export function AboutFounder() {
   return (
