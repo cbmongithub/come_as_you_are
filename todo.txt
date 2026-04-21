@@ -1,0 +1,10 @@
+-Code a system that takes in payment with stripe first, and
+-on success, presents the calendar to book the 1 on 1 call.
+
+-We need a disclaimer saying not a therapist.
+-We need to accept payments via klerna or pay later. https://docs.stripe.com/payments/klarna
+-Later, we should use the domain email for everything.
+-For donations/sponsorships from businesses, they need stripe tax fields. https://docs.stripe.com/billing/customer/tax-ids
+- Subscriptions later via stripe https://docs.stripe.com/billing/quickstart?client=react&lang=node
+- Set up usage based. When a google meet is occurring, the minutes will be converted to usage based minutes, 1 hr 23 minutes 30 seconds for example,
+paid every second of the meeting. We can do a function to convert the minutes if needed, but maybe it's available already from google in seconds or ms here is the stripe doc for it: https://dashboard.stripe.com/acct_1Suhj1GtwsfnqllU/meters?status=active
