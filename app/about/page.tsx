@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AboutFounder } from "@/components/sections/AboutFounder";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
@@ -135,8 +134,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <AboutFounder />
-
       {/* Philosophy */}
       <section
         className="section-pad"
@@ -258,7 +255,7 @@ export default function AboutPage() {
                   {
                     year: "2019",
                     event:
-                      "Jordan hosts the first peer circle — a group of five friends sitting on a living room floor, talking about what wasn't working.",
+                      "Ashley hosts the first peer circle — a group of five friends sitting on a living room floor, talking about what wasn't working.",
                   },
                   {
                     year: "2021",

@@ -1,47 +1,38 @@
+import Image from "next/image";
 import Link from "next/link";
+import ashleyPortrait from "@/app/assets/img/ashley.jpg";
 import { Button } from "@/components/ui/Button";
 
-export function Founder() {
+interface FounderProps {
+  showAboutLink?: boolean;
+}
+
+export function Founder({ showAboutLink = false }: FounderProps) {
   return (
     <section
-      className="section-pad"
+      className="section-pad overflow-hidden"
       style={{ background: "var(--color-sand)" }}
     >
       <div className="container-wide">
-        <div className="grid md:grid-cols-12 gap-12 items-center">
-          {/* Photo placeholder */}
-          <div className="md:col-span-4">
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-20">
+          <div className="relative h-105 sm:h-130 lg:h-155">
             <div
-              className="aspect-3/4 rounded-(--radius-card) overflow-hidden relative"
-              style={{
-                background:
-                  "linear-gradient(160deg, var(--color-clay-light) 0%, var(--color-clay-dark) 100%)",
-              }}
-            >
-              {/* Decorative overlay */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "radial-gradient(circle at 40% 70%, oklch(99% 0.005 80 / 0.15), transparent 60%)",
-                }}
+              aria-hidden
+              className="absolute -left-8 -top-8 h-36 w-36 rounded-full opacity-30 blur-3xl"
+              style={{ background: "var(--color-sage-light)" }}
+            />
+            <div className="absolute inset-0 overflow-hidden rounded-(--radius-card) shadow-(--shadow-warm)">
+              <Image
+                src={ashleyPortrait}
+                alt="Ashley, founder of Come As You Are"
+                fill
+                sizes="(min-width: 1024px) 44vw, 100vw"
+                className="object-cover object-center"
               />
-              <div className="absolute bottom-6 left-6 right-6">
-                <p
-                  className="text-xl italic"
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    color: "var(--color-warm-white)",
-                  }}
-                >
-                  Founder Photo
-                </p>
-              </div>
             </div>
           </div>
 
-          {/* Content */}
-          <div className="md:col-span-8 md:pl-8">
+          <div className="max-w-2xl lg:pt-4">
             <p
               className="text-xs uppercase tracking-[0.2em] mb-4"
               style={{
@@ -49,69 +40,79 @@ export function Founder() {
                 fontFamily: "var(--font-body)",
               }}
             >
-              From the founder
+              Meet the founder
             </p>
-            <blockquote
-              className="text-[clamp(1.5rem,3vw,2.5rem)] leading-tight mb-6"
+            <h2
+              className="text-[clamp(2.5rem,5vw,4.75rem)] leading-[1.02] mb-6"
               style={{
                 fontFamily: "var(--font-display)",
                 color: "var(--color-charcoal)",
               }}
             >
-              &ldquo;I built this because I needed it. And I kept meeting people
-              who did too.&rdquo;
+              Built from lived experience, not distance.
+            </h2>
+            <div className="space-y-5">
+              <p
+                className="text-lg leading-relaxed"
+                style={{
+                  color: "var(--color-charcoal-soft)",
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                I&apos;m not a therapist. I&apos;m not a life coach. I&apos;m
+                someone who&apos;s lived through it.
+              </p>
+              <p
+                className="leading-relaxed"
+                style={{
+                  color: "var(--color-charcoal-soft)",
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                I&apos;m a single mom, a survivor, and a woman who&apos;s had to
+                rebuild herself more times than I can count. I created Come As
+                You Are because I know what it feels like to be drowning and
+                still expected to show up like everything is fine.
+              </p>
+              <p
+                className="leading-relaxed"
+                style={{
+                  color: "var(--color-charcoal-soft)",
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                This space is everything I wish existed when I needed help: a
+                place where healing is human, not clinical. No judgment. No
+                shame. Just honesty, growth, and people who get it.
+              </p>
+            </div>
+            <blockquote
+              className="mt-8 border-l pl-6 text-2xl leading-snug italic md:text-3xl"
+              style={{
+                borderColor: "var(--color-clay-light)",
+                fontFamily: "var(--font-display)",
+                color: "var(--color-charcoal)",
+              }}
+            >
+              &ldquo;I don&apos;t want to save people. I want them to know they
+              never needed fixing in the first place.&rdquo;
             </blockquote>
-            <p
-              className="text-base leading-relaxed mb-4"
-              style={{
-                color: "var(--color-charcoal-soft)",
-                fontFamily: "var(--font-body)",
-              }}
-            >
-              After years of navigating mental health care that felt clinical,
-              costly, and disconnected, I wanted to create something different.
-              A space that felt more like a kitchen table than a waiting room.
-            </p>
-            <p
-              className="text-base leading-relaxed mb-8"
-              style={{
-                color: "var(--color-charcoal-soft)",
-                fontFamily: "var(--font-body)",
-              }}
-            >
-              Come As You Are grew from one circle of five friends to a
-              community of hundreds. We&apos;re still the same at heart: honest,
-              warm, and deeply committed to meeting you wherever you are.
-            </p>
-
-            <div className="flex items-center gap-4">
-              <div>
-                <p
-                  className="font-semibold"
-                  style={{
-                    color: "var(--color-charcoal)",
-                    fontFamily: "var(--font-body)",
-                  }}
-                >
-                  Jordan Ellis
-                </p>
-                <p
-                  className="text-sm italic"
-                  style={{
-                    color: "var(--color-charcoal-soft)",
-                    fontFamily: "var(--font-display)",
-                  }}
-                >
-                  Founder & Community Director
-                </p>
-              </div>
-              <div
-                className="h-10 w-px ml-2"
-                style={{ background: "var(--color-clay-light)" }}
-              />
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/about">Full Story →</Link>
-              </Button>
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4">
+              <div className="h-px w-16 bg-clay-light" />
+              <p
+                className="text-sm uppercase tracking-[0.18em]"
+                style={{
+                  color: "var(--color-clay)",
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                Ashley, Founder of Come As You Are
+              </p>
+              {showAboutLink ? (
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="/about">Full Story</Link>
+                </Button>
+              ) : null}
             </div>
           </div>
         </div>

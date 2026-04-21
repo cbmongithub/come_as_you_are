@@ -106,7 +106,7 @@ const sessions: Session[] = [
   {
     id: "creative-movement-01",
     title: "Movement as Medicine",
-    host: "Jordan Ellis",
+    host: "Ashley",
     category: "creative",
     date: "Fri, Apr 18",
     time: "10:00 AM",

@@ -10,7 +10,7 @@ export default function HomePage() {
       <Hero />
       <ProblemSolution />
       <Offerings />
-      <Founder />
+      <Founder showAboutLink />
       <HomeCTA />
     </>
   );
