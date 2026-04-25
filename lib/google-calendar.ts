@@ -1,15 +1,15 @@
 import { createSign } from "node:crypto";
 
-interface GoogleServiceAccountCredentials {
+type GoogleServiceAccountCredentials = {
   client_email: string;
   private_key: string;
-}
+};
 
-interface GoogleTokenResponse {
+type GoogleTokenResponse = {
   access_token?: string;
   error?: string;
   error_description?: string;
-}
+};
 
 const googleTokenUrl = "https://oauth2.googleapis.com/token";
 const googleCalendarScope = "https://www.googleapis.com/auth/calendar";
@@ -38,7 +38,9 @@ async function loadCredentialsFromDevFile(filePath: string) {
   const parsed = JSON.parse(raw) as Partial<GoogleServiceAccountCredentials>;
 
   if (!parsed.client_email || !parsed.private_key) {
-    throw new Error("Google service account key file is missing required fields.");
+    throw new Error(
+      "Google service account key file is missing required fields.",
+    );
   }
 
   return {
@@ -58,7 +60,8 @@ async function loadGoogleServiceAccountCredentials() {
     };
   }
 
-  const keyFile = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_FILE || "google-calendar.json";
+  const keyFile =
+    process.env.GOOGLE_SERVICE_ACCOUNT_KEY_FILE || "google-calendar.json";
   const devFileCredentials = await loadCredentialsFromDevFile(keyFile);
 
   if (devFileCredentials) {
@@ -104,7 +107,9 @@ async function getGoogleAccessToken() {
 
   if (!response.ok || !token.access_token) {
     throw new Error(
-      token.error_description || token.error || "Failed to authorize Google Calendar.",
+      token.error_description ||
+        token.error ||
+        "Failed to authorize Google Calendar.",
     );
   }
 
@@ -155,7 +160,7 @@ export async function getGoogleCalendarHealth() {
   };
 }
 
-interface GoogleFreeBusyResponse {
+type GoogleFreeBusyResponse = {
   calendars?: Record<
     string,
     {
@@ -168,28 +173,28 @@ interface GoogleFreeBusyResponse {
   error?: {
     message?: string;
   };
-}
+};
 
-interface GoogleCalendarEventResponse {
+type GoogleCalendarEventResponse = {
   id?: string;
   htmlLink?: string;
   error?: {
     message?: string;
   };
-}
+};
 
-export interface BookingSlot {
+export type BookingSlot = {
   start: string;
   end: string;
   label: string;
-}
+};
 
-export interface CreateBookingEventInput {
+export type CreateBookingEventInput = {
   start: string;
   end: string;
   summary: string;
   description: string;
-}
+};
 
 function getCalendarId() {
   const calendarId = process.env.GOOGLE_CALENDAR_ID;
@@ -216,7 +221,9 @@ function getDatePartsInTimeZone(date: Date, timeZone: string) {
     second: "2-digit",
     hourCycle: "h23",
   }).formatToParts(date);
-  const byType = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  const byType = Object.fromEntries(
+    parts.map((part) => [part.type, part.value]),
+  );
 
   return {
     year: Number(byType.year),
@@ -254,7 +261,11 @@ function addMinutes(date: Date, minutes: number) {
   return new Date(date.getTime() + minutes * 60_000);
 }
 
-function overlapsBusy(start: Date, end: Date, busy: Array<{ start: string; end: string }>) {
+function overlapsBusy(
+  start: Date,
+  end: Date,
+  busy: Array<{ start: string; end: string }>,
+) {
   return busy.some((busyBlock) => {
     const busyStart = new Date(busyBlock.start);
     const busyEnd = new Date(busyBlock.end);
@@ -283,19 +294,22 @@ export async function getBookingAvailability({
   const { accessToken } = await getGoogleAccessToken();
   const dayStart = zonedDateTimeToUtc(date, 0, 0, timeZone);
   const dayEnd = zonedDateTimeToUtc(date, 23, 59, timeZone);
-  const response = await fetch("https://www.googleapis.com/calendar/v3/freeBusy", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      "Content-Type": "application/json",
+  const response = await fetch(
+    "https://www.googleapis.com/calendar/v3/freeBusy",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        timeMin: dayStart.toISOString(),
+        timeMax: dayEnd.toISOString(),
+        timeZone,
+        items: [{ id: calendarId }],
+      }),
     },
-    body: JSON.stringify({
-      timeMin: dayStart.toISOString(),
-      timeMax: dayEnd.toISOString(),
-      timeZone,
-      items: [{ id: calendarId }],
-    }),
-  });
+  );
   const freeBusy = (await response.json()) as GoogleFreeBusyResponse;
 
   if (!response.ok) {
@@ -336,7 +350,9 @@ export async function getBookingAvailability({
   };
 }
 
-export async function createBookingCalendarEvent(input: CreateBookingEventInput) {
+export async function createBookingCalendarEvent(
+  input: CreateBookingEventInput,
+) {
   const calendarId = getCalendarId();
   const timeZone = getBookingTimeZone();
   const { accessToken } = await getGoogleAccessToken();
@@ -367,7 +383,9 @@ export async function createBookingCalendarEvent(input: CreateBookingEventInput)
   const event = (await response.json()) as GoogleCalendarEventResponse;
 
   if (!response.ok || !event.id) {
-    throw new Error(event.error?.message || "Google Calendar event creation failed.");
+    throw new Error(
+      event.error?.message || "Google Calendar event creation failed.",
+    );
   }
 
   return {

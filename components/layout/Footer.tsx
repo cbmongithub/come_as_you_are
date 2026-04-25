@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Mail, Heart } from "lucide-react";
+import { Mail } from "lucide-react";
+import { Logo } from "@/components/ui/Logo";
 
 function InstagramIcon({ size = 16 }: { size?: number }) {
   return (
@@ -23,61 +24,47 @@ function InstagramIcon({ size = 16 }: { size?: number }) {
 
 export function Footer() {
   return (
-    <footer
-      className="relative overflow-hidden"
-      style={{ background: "var(--color-charcoal)" }}
-    >
+    <footer className="relative overflow-hidden bg-caya-charcoal">
       {/* Decorative top border */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent, oklch(55% 0.12 38), transparent)",
-        }}
-      />
+      <div className="absolute top-0 left-0 right-0 h-px bg-caya-footer-rule" />
 
       <div className="container-wide py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           {/* Brand */}
           <div className="md:col-span-5">
-            <h3
-              className="text-4xl mb-4"
-              style={{
-                fontFamily: "var(--font-display)",
-                color: "var(--color-sand)",
-              }}
-            >
-              Come As You Are
-            </h3>
-            <p
-              className="text-sm leading-relaxed max-w-xs mb-6"
-              style={{
-                color: "oklch(88% 0.04 75 / 0.6)",
-                fontFamily: "var(--font-body)",
-              }}
-            >
+            <Link href="/#hero" className="mb-5 inline-block">
+              <Logo
+                className="h-12 w-auto"
+                wordmark="var(--color-caya-sand)"
+                background="var(--color-caya-clay)"
+                foreground="var(--color-caya-sand)"
+              />
+            </Link>
+            <p className="mb-6 max-w-xs text-sm leading-relaxed font-body text-caya-sand-72">
               A peer-led mental wellness community. This is not therapy — this
               is belonging. Come as you are, stay as long as you need.
             </p>
             <div className="flex gap-4">
               {[
-                { icon: InstagramIcon, label: "Instagram", href: "#" },
+                {
+                  icon: InstagramIcon,
+                  label: "Instagram",
+                  target: "_blank",
+                  href: "https://www.instagram.com/sunflowerbabbbe",
+                },
                 {
                   icon: Mail,
                   label: "Email",
-                  href: "mailto:hello@comeasyouare.co",
+                  target: "_blank",
+                  href: "mailto:ashley@supportcomeasyou.org",
                 },
-              ].map(({ icon: Icon, label, href }) => (
+              ].map(({ icon: Icon, label, href, target }) => (
                 <a
                   key={label}
                   href={href}
+                  target={target}
                   aria-label={label}
-                  className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                  style={{
-                    background: "oklch(88% 0.04 75 / 0.1)",
-                    color: "var(--color-sand)",
-                    border: "1px solid oklch(88% 0.04 75 / 0.2)",
-                  }}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-caya-sand-20 bg-caya-sand-10 text-caya-sand transition-all duration-300 hover:scale-110"
                 >
                   <Icon size={16} />
                 </a>
@@ -91,39 +78,34 @@ export function Footer() {
               {
                 title: "Explore",
                 links: [
-                  { href: "/about", label: "About Us" },
-                  { href: "/programs", label: "Programs" },
-                  { href: "/the-space", label: "The Space" },
                   { href: "/events", label: "Events" },
+                  { href: "/book", label: "Book a Session" },
+                  { href: "/about", label: "About" },
                 ],
               },
               {
-                title: "Community",
+                title: "What We Are",
                 links: [
-                  { href: "/support", label: "Support the Space" },
-                  { href: "/support#sponsor", label: "Sponsorships" },
-                  { href: "/support#donate", label: "Donate" },
-                  { href: "/support#partners", label: "Partners" },
+                  { href: "/#what-it-is", label: "Peer-led support" },
+                  { href: "/#problem", label: "The reality" },
+                  { href: "/#solution", label: "What it looks like" },
                 ],
               },
               {
                 title: "Connect",
                 links: [
+                  { href: "/events", label: "Upcoming Event" },
                   { href: "/book", label: "Book a Session" },
-                  { href: "#newsletter", label: "Newsletter" },
-                  { href: "mailto:hello@comeasyouare.co", label: "Contact" },
-                  { href: "#crisis", label: "Crisis Resources" },
+                  {
+                    href: "mailto:ashley@supportcomeasyou.org",
+                    label: "Contact",
+                  },
+                  // { href: "#crisis", label: "Crisis Resources" },
                 ],
               },
             ].map((col) => (
               <div key={col.title}>
-                <p
-                  className="text-xs uppercase tracking-[0.15em] mb-4 font-medium"
-                  style={{
-                    color: "oklch(88% 0.04 75 / 0.4)",
-                    fontFamily: "var(--font-body)",
-                  }}
-                >
+                <p className="mb-4 text-xs font-medium uppercase tracking-caya-label font-body text-caya-sand-50">
                   {col.title}
                 </p>
                 <ul className="flex flex-col gap-2.5">
@@ -131,11 +113,7 @@ export function Footer() {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm transition-colors duration-200 hover:text-clay-light"
-                        style={{
-                          color: "oklch(88% 0.04 75 / 0.6)",
-                          fontFamily: "var(--font-body)",
-                        }}
+                        className="text-sm font-body text-caya-sand-72 transition-colors duration-200 hover:text-caya-clay-light"
                       >
                         {link.label}
                       </Link>
@@ -150,77 +128,30 @@ export function Footer() {
         {/* Crisis Banner */}
         <div
           id="crisis"
-          className="rounded-2xl p-6 mb-12 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between"
-          style={{
-            background: "oklch(55% 0.12 38 / 0.15)",
-            border: "1px solid oklch(55% 0.12 38 / 0.3)",
-          }}
+          className="mb-12 flex flex-col items-start justify-between gap-4 rounded-2xl border border-caya-clay-30 bg-caya-clay-15 p-6 sm:flex-row sm:items-center"
         >
           <div>
-            <p
-              className="text-sm font-medium mb-1"
-              style={{
-                color: "var(--color-clay-light)",
-                fontFamily: "var(--font-body)",
-              }}
-            >
+            <p className="mb-1 text-sm font-medium font-body text-caya-clay-light">
               Need immediate support?
             </p>
-            <p
-              className="text-xs"
-              style={{
-                color: "oklch(88% 0.04 75 / 0.5)",
-                fontFamily: "var(--font-body)",
-              }}
-            >
+            <p className="text-xs font-body text-caya-sand-60">
               We are not a crisis service. If you are in distress, please reach
               out to a professional.
             </p>
           </div>
           <a
             href="tel:988"
-            className="shrink-0 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300"
-            style={{
-              background: "var(--color-clay)",
-              color: "var(--color-warm-white)",
-              fontFamily: "var(--font-body)",
-            }}
+            className="shrink-0 rounded-full bg-caya-clay px-5 py-2 text-sm font-medium font-body text-caya-warm-white transition-all duration-300"
           >
             Call 988 (Crisis Line)
           </a>
         </div>
 
         {/* Bottom bar */}
-        <div
-          className="pt-8 flex flex-col sm:flex-row gap-4 items-center justify-between"
-          style={{ borderTop: "1px solid oklch(88% 0.04 75 / 0.1)" }}
-        >
-          <p
-            className="text-xs flex items-center gap-1.5"
-            style={{
-              color: "oklch(88% 0.04 75 / 0.35)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            © 2025 Come As You Are. Made with{" "}
-            <Heart size={11} style={{ color: "var(--color-clay-light)" }} /> for
-            the community.
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-caya-sand-10 pt-8 sm:flex-row">
+          <p className="flex items-center gap-1.5 text-xs font-body text-caya-sand-50">
+            © 2025 Come As You Are
           </p>
-          <div className="flex gap-6">
-            {["Privacy", "Accessibility", "Terms"].map((item) => (
-              <Link
-                key={item}
-                href="#"
-                className="text-xs transition-colors duration-200 hover:text-clay-light"
-                style={{
-                  color: "oklch(88% 0.04 75 / 0.35)",
-                  fontFamily: "var(--font-body)",
-                }}
-              >
-                {item}
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
     </footer>

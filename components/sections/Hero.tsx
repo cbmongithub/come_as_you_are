@@ -3,10 +3,14 @@ import Link from "next/link";
 import { ArrowDown } from "lucide-react";
 import heroImage from "@/app/assets/img/hero.jpg";
 import { Button } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center overflow-hidden"
+    >
       <Image
         src={heroImage}
         alt=""
@@ -16,167 +20,88 @@ export function Hero() {
         sizes="100vw"
         className="object-cover object-[58%_center]"
       />
+      <div aria-hidden className="absolute inset-0 bg-caya-hero-overlay" />
       <div
         aria-hidden
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(90deg, oklch(18% 0.025 60 / 0.84) 0%, oklch(18% 0.025 60 / 0.62) 39%, oklch(18% 0.025 60 / 0.24) 72%, oklch(18% 0.025 60 / 0.2) 100%)",
-        }}
+        className="absolute inset-x-0 bottom-0 h-36 bg-caya-hero-fade"
       />
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 h-36"
-        style={{
-          background:
-            "linear-gradient(to bottom, transparent, var(--color-canvas))",
-        }}
-      />
-      <div
-        aria-hidden
-        className="absolute left-8 top-1/3 bottom-1/3 w-px hidden lg:block"
-        style={{
-          background:
-            "linear-gradient(to bottom, transparent, oklch(88% 0.04 75 / 0.5), transparent)",
-        }}
+        className="absolute bottom-1/3 left-8 top-1/3 hidden w-px bg-caya-vertical-rule lg:block"
       />
 
       <div className="container-wide relative z-10 pt-28 pb-20">
         <div className="max-w-3xl">
-          {/* Eyebrow */}
-          <div
-            className="inline-flex items-center gap-3 mb-8 px-4 py-2 rounded-full animate-fade-in"
-            style={{
-              background: "oklch(99% 0.005 80 / 0.13)",
-              border: "1px solid oklch(99% 0.005 80 / 0.2)",
-              backdropFilter: "blur(12px)",
-              animationDelay: "0.1s",
-              opacity: 0,
-              animationFillMode: "forwards",
-            }}
-          >
-            <span
-              className="w-2 h-2 rounded-full animate-pulse"
-              style={{ background: "var(--color-clay)" }}
-            />
-            <span
-              className="text-xs tracking-[0.18em] uppercase font-medium"
-              style={{
-                color: "var(--color-sand)",
-                fontFamily: "var(--font-body)",
-              }}
+          <h1 className="mb-8 text-caya-display-hero leading-[1.02] font-display font-normal text-caya-warm-white text-shadow-caya-hero">
+            <Reveal
+              as="span"
+              delay={0.14}
+              duration={0.72}
+              y={28}
+              className="block"
             >
-              Peer-Led Mental Wellness
-            </span>
-          </div>
-
-          {/* Headline */}
-          <h1
-            className="text-[clamp(3.5rem,8vw,7rem)] leading-[1.02] mb-8"
-            style={{
-              fontFamily: "var(--font-display)",
-              color: "var(--color-warm-white)",
-              fontWeight: 400,
-              textShadow: "0 3px 36px oklch(10% 0.02 60 / 0.35)",
-            }}
-          >
-            <span
-              className="block animate-fade-up"
-              style={{
-                animationDelay: "0.2s",
-                opacity: 0,
-                animationFillMode: "forwards",
-              }}
-            >
-              You don't need
-            </span>
-            <span
-              className="block italic animate-fade-up"
-              style={{
-                color: "var(--color-clay-light)",
-                animationDelay: "0.35s",
-                opacity: 0,
-                animationFillMode: "forwards",
-              }}
+              You don&apos;t need
+            </Reveal>
+            <Reveal
+              as="span"
+              delay={0.26}
+              duration={0.72}
+              y={28}
+              className="block italic text-caya-clay-light"
             >
               to be okay
-            </span>
-            <span
-              className="block animate-fade-up"
-              style={{
-                animationDelay: "0.5s",
-                opacity: 0,
-                animationFillMode: "forwards",
-              }}
+            </Reveal>
+            <Reveal
+              as="span"
+              delay={0.38}
+              duration={0.72}
+              y={28}
+              className="block"
             >
               to be here.
-            </span>
+            </Reveal>
           </h1>
 
-          {/* Subhead */}
-          <p
-            className="text-lg leading-relaxed max-w-xl mb-12 animate-fade-up"
-            style={{
-              color: "oklch(96% 0.015 80 / 0.86)",
-              fontFamily: "var(--font-body)",
-              animationDelay: "0.65s",
-              opacity: 0,
-              animationFillMode: "forwards",
-            }}
-          >
-            A human-centered space for peer support, shared stories, and quiet
-            community. No credentials required — just your honest, whole self.
-          </p>
+          <Reveal delay={0.5} duration={0.72} y={24}>
+            <p className="mb-12 max-w-lg text-lg leading-relaxed font-body text-caya-warm-white-86">
+              A peer-led mental wellness community built for honest connection,
+              shared experience, and support that feels human. Not therapy. Not
+              crisis care. A place to begin as you are.
+            </p>
+          </Reveal>
 
-          {/* CTAs */}
-          <div
-            className="flex flex-wrap gap-4 animate-fade-up"
-            style={{
-              animationDelay: "0.8s",
-              opacity: 0,
-              animationFillMode: "forwards",
-            }}
-          >
-            <Button size="lg" asChild>
-              <Link href="/programs">Find a Session</Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-[oklch(99%_0.005_80/0.65)] text-[oklch(99%_0.005_80)] hover:bg-[oklch(99%_0.005_80/0.12)]"
-              asChild
-            >
-              <Link href="/about">Our Story</Link>
-            </Button>
-          </div>
+          <Reveal delay={0.62} duration={0.72} y={24}>
+            <div className="flex flex-wrap gap-4">
+              <Button size="lg" asChild>
+                <Link href="/events">Find an Event</Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-caya-white-65 text-caya-warm-white hover:bg-caya-sand-12"
+                asChild
+              >
+                <Link href="/book">Book a Session</Link>
+              </Button>
+            </div>
+          </Reveal>
 
-          {/* Trust line */}
-          <p
-            className="mt-8 text-xs animate-fade-up"
-            style={{
-              color: "oklch(96% 0.015 80 / 0.66)",
-              fontFamily: "var(--font-body)",
-              animationDelay: "1s",
-              opacity: 0,
-              animationFillMode: "forwards",
-            }}
-          >
-            Free & sliding scale sessions available · Not a crisis service
-          </p>
+          <Reveal delay={0.76} duration={0.72} y={16}>
+            <p className="mt-8 text-xs font-body text-caya-warm-white-66">
+              Event details and booking are live now · More of the site is still
+              on the way
+            </p>
+          </Reveal>
         </div>
       </div>
 
       {/* Scroll cue */}
       <a
-        href="#problem"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce"
-        style={{ color: "oklch(96% 0.015 80 / 0.62)" }}
+        href="#what-it-is"
+        className="absolute bottom-4 left-1/2 flex -translate-x-1/2 animate-bounce flex-col items-center gap-2 text-caya-charcoal"
         aria-label="Scroll down"
       >
-        <span
-          className="text-[10px] tracking-[0.2em] uppercase"
-          style={{ fontFamily: "var(--font-body)" }}
-        >
+        <span className="text-caya-micro uppercase tracking-caya-eyebrow font-body">
           Scroll
         </span>
         <ArrowDown size={14} />

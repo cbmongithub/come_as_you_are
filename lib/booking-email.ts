@@ -1,4 +1,4 @@
-interface BookingConfirmationEmailInput {
+type BookingConfirmationEmailInput = {
   to?: string | null;
   customerName?: string | null;
   productName: string;
@@ -6,15 +6,15 @@ interface BookingConfirmationEmailInput {
   end: string;
   timeZone: string;
   calendarEventLink?: string | null;
-}
+};
 
-interface ResendEmailResponse {
+type ResendEmailResponse = {
   id?: string;
   message?: string;
   error?: {
     message?: string;
   };
-}
+};
 
 function escapeHtml(value: string) {
   return value
@@ -33,7 +33,10 @@ function escapeIcsText(value: string) {
 }
 
 function formatIcsDate(value: string) {
-  return new Date(value).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  return new Date(value)
+    .toISOString()
+    .replace(/[-:]/g, "")
+    .replace(/\.\d{3}/, "");
 }
 
 function foldIcsLine(line: string) {
@@ -53,7 +56,9 @@ function foldIcsLine(line: string) {
 
   chunks.push(remaining);
 
-  return chunks.map((chunk, index) => (index === 0 ? chunk : ` ${chunk}`)).join("\r\n");
+  return chunks
+    .map((chunk, index) => (index === 0 ? chunk : ` ${chunk}`))
+    .join("\r\n");
 }
 
 function createIcs(input: BookingConfirmationEmailInput) {
@@ -61,7 +66,9 @@ function createIcs(input: BookingConfirmationEmailInput) {
   const description = [
     "Come As You Are peer support session.",
     "This is not therapy, medical care, diagnosis, or crisis intervention.",
-    input.calendarEventLink ? `Calendar event: ${input.calendarEventLink}` : null,
+    input.calendarEventLink
+      ? `Calendar event: ${input.calendarEventLink}`
+      : null,
   ]
     .filter(Boolean)
     .join("\n");
@@ -132,7 +139,8 @@ export async function sendBookingConfirmationEmail(
   if (!config.apiKey || !config.from) {
     return {
       sent: false,
-      skippedReason: "Email is not configured. Set RESEND_API_KEY and BOOKING_EMAIL_FROM.",
+      skippedReason:
+        "Email is not configured. Set RESEND_API_KEY and BOOKING_EMAIL_FROM.",
     };
   }
 
@@ -196,7 +204,9 @@ export async function sendBookingConfirmationEmail(
 
   if (!response.ok) {
     throw new Error(
-      payload.error?.message || payload.message || "Failed to send confirmation email.",
+      payload.error?.message ||
+        payload.message ||
+        "Failed to send confirmation email.",
     );
   }
 

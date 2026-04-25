@@ -1,70 +1,54 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function HomeCTA() {
   return (
-    <section
-      className="section-pad relative overflow-hidden grain-overlay"
-      style={{ background: "var(--color-charcoal)" }}
-    >
+    <section className="section-pad relative overflow-hidden grain-overlay bg-caya-charcoal">
       {/* Decorative glow */}
       <div
         aria-hidden
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[140px] opacity-20 pointer-events-none"
-        style={{ background: "var(--color-clay)" }}
+        className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 rounded-full bg-caya-cta-glow"
       />
 
       <div className="container-wide relative z-10">
         <div className="max-w-2xl mx-auto text-center">
-          <p
-            className="text-xs uppercase tracking-[0.2em] mb-6"
-            style={{
-              color: "var(--color-clay-light)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            Ready when you are
-          </p>
-          <h2
-            className="text-[clamp(2.5rem,5vw,4.5rem)] leading-tight mb-6"
-            style={{
-              fontFamily: "var(--font-display)",
-              color: "var(--color-sand)",
-            }}
-          >
+          <Reveal y={18}>
+            <p className="mb-6 text-xs uppercase tracking-caya-eyebrow font-body text-caya-clay-light">
+              Ready when you are
+            </p>
+          </Reveal>
+          <Reveal delay={0.08} y={26}>
+            <h2 className="mb-6 text-caya-display-md leading-tight font-display text-caya-sand">
             There&apos;s a seat at the
-            <span
-              className="italic"
-              style={{ color: "var(--color-clay-light)" }}
-            >
+            <span className="italic text-caya-clay-light">
               {" "}
               table{" "}
             </span>
             for you.
-          </h2>
-          <p
-            className="text-base leading-relaxed mb-10"
-            style={{
-              color: "oklch(88% 0.04 75 / 0.6)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
+            </h2>
+          </Reveal>
+          <Reveal delay={0.16} y={24}>
+            <p className="mb-10 text-base leading-relaxed font-body text-caya-sand-60">
             No intake form. No referral. No prerequisite for struggle. Just show
             up. We&apos;ll take it from there.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
+            </p>
+          </Reveal>
+          <Reveal delay={0.24} y={20}>
+            <div className="flex flex-wrap gap-4 justify-center">
             <Button size="lg" asChild>
               <Link href="/programs">Browse Sessions</Link>
             </Button>
             <Button
               size="lg"
-              className="border-[oklch(88%_0.04_75/0.3)] text-sand hover:bg-[oklch(88%_0.04_75/0.1)]"
+              className="border-caya-clay-30 text-sand hover:bg-caya-sand-10"
               variant="outline"
               asChild
             >
               <Link href="/the-space">Visit The Space</Link>
             </Button>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

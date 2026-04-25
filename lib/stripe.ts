@@ -3,7 +3,7 @@ import {
   getBookingProductsWithConfig,
 } from "@/lib/booking-products";
 
-interface StripeCheckoutSession {
+type StripeCheckoutSession = {
   id: string;
   mode?: string;
   url?: string | null;
@@ -13,7 +13,7 @@ interface StripeCheckoutSession {
     email?: string | null;
     name?: string | null;
   } | null;
-}
+};
 
 const stripeApiBaseUrl = "https://api.stripe.com/v1";
 

@@ -1,6 +1,6 @@
 import "server-only";
 
-export interface SiteEvent {
+export type SiteEvent = {
   id: string;
   title: string;
   type: "Community" | "Workshop" | "Training" | "Conversation" | "Event";
@@ -12,9 +12,9 @@ export interface SiteEvent {
   emoji: string;
   url: string | null;
   imageUrl: string | null;
-}
+};
 
-export interface SiteEventDetails {
+export type SiteEventDetails = {
   organizerName: string | null;
   organizerUrl: string | null;
   refundPolicy: string | null;
@@ -25,9 +25,9 @@ export interface SiteEventDetails {
   fullDescriptionHtml: string | null;
   addressDisplay: string | null;
   durationLabel: string | null;
-}
+};
 
-interface EventbriteEvent {
+type EventbriteEvent = {
   id: string;
   name?: { text?: string | null };
   summary?: string | null;
@@ -62,19 +62,19 @@ interface EventbriteEvent {
     url?: string | null;
     original?: { url?: string | null };
   };
-}
+};
 
-interface EventbriteListResponse {
+type EventbriteListResponse = {
   events?: EventbriteEvent[];
-}
+};
 
-interface EventbriteOrganizationsResponse {
+type EventbriteOrganizationsResponse = {
   organizations?: Array<{ id: string }>;
-}
+};
 
-interface EventbriteDescriptionResponse {
+type EventbriteDescriptionResponse = {
   description?: string | null;
-}
+};
 
 const EVENTBRITE_BASE_URL =
   process.env.EVENTBRITE_BASE_URL ?? "https://www.eventbriteapi.com/v3";
@@ -132,7 +132,11 @@ function getEventbriteConfig() {
   return { token, organizationId, status };
 }
 
-async function eventbriteFetch<T>(url: string, token: string, revalidate = 300) {
+async function eventbriteFetch<T>(
+  url: string,
+  token: string,
+  revalidate = 300,
+) {
   const response = await fetch(url, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -142,7 +146,9 @@ async function eventbriteFetch<T>(url: string, token: string, revalidate = 300) 
   });
 
   if (!response.ok) {
-    throw new Error(`Eventbrite request failed with ${response.status} ${response.statusText}`);
+    throw new Error(
+      `Eventbrite request failed with ${response.status} ${response.statusText}`,
+    );
   }
 
   return (await response.json()) as T;
@@ -150,14 +156,18 @@ async function eventbriteFetch<T>(url: string, token: string, revalidate = 300) 
 
 async function resolveOrganizationId(token: string, organizationId?: string) {
   if (organizationId) return organizationId;
-  const data = await eventbriteFetch<EventbriteOrganizationsResponse>(`${EVENTBRITE_BASE_URL}/users/me/organizations/`, token);
+  const data = await eventbriteFetch<EventbriteOrganizationsResponse>(
+    `${EVENTBRITE_BASE_URL}/users/me/organizations/`,
+    token,
+  );
   return data.organizations?.[0]?.id || null;
 }
 
 function formatEventDateParts(localDateTime?: string | null) {
   if (!localDateTime) return { date: "Date TBA", time: "Time TBA" };
   const date = new Date(localDateTime);
-  if (Number.isNaN(date.getTime())) return { date: "Date TBA", time: "Time TBA" };
+  if (Number.isNaN(date.getTime()))
+    return { date: "Date TBA", time: "Time TBA" };
   return {
     date: new Intl.DateTimeFormat("en-US", {
       weekday: "long",
@@ -171,7 +181,10 @@ function formatEventDateParts(localDateTime?: string | null) {
   };
 }
 
-function formatEventTimeRange(startLocal?: string | null, endLocal?: string | null) {
+function formatEventTimeRange(
+  startLocal?: string | null,
+  endLocal?: string | null,
+) {
   const start = formatEventDateParts(startLocal).time;
   if (!endLocal) return start;
   const end = formatEventDateParts(endLocal).time;
@@ -183,19 +196,31 @@ function getEventType(event: EventbriteEvent): SiteEvent["type"] {
   const normalized = event.format?.name_localized?.toLowerCase() || "";
   const title = event.name?.text?.toLowerCase() || "";
   if (normalized.includes("training")) return "Training";
-  if (normalized.includes("workshop") || normalized.includes("class")) return "Workshop";
-  if (normalized.includes("network") || normalized.includes("meeting")) return "Community";
-  if (title.includes("circle") || title.includes("conversation") || title.includes("talk")) return "Conversation";
+  if (normalized.includes("workshop") || normalized.includes("class"))
+    return "Workshop";
+  if (normalized.includes("network") || normalized.includes("meeting"))
+    return "Community";
+  if (
+    title.includes("circle") ||
+    title.includes("conversation") ||
+    title.includes("talk")
+  )
+    return "Conversation";
   return "Event";
 }
 
 function getEventEmoji(type: SiteEvent["type"]) {
   switch (type) {
-    case "Workshop": return "✍️";
-    case "Training": return "🌱";
-    case "Conversation": return "🕯️";
-    case "Community": return "🤝";
-    default: return "📅";
+    case "Workshop":
+      return "✍️";
+    case "Training":
+      return "🌱";
+    case "Conversation":
+      return "🕯️";
+    case "Community":
+      return "🤝";
+    default:
+      return "📅";
   }
 }
 
@@ -214,7 +239,10 @@ function getEventImage(event: EventbriteEvent) {
   return event.logo?.original?.url || event.logo?.url || null;
 }
 
-function getDurationLabel(startLocal?: string | null, endLocal?: string | null) {
+function getDurationLabel(
+  startLocal?: string | null,
+  endLocal?: string | null,
+) {
   if (!startLocal || !endLocal) return null;
   const start = new Date(startLocal);
   const end = new Date(endLocal);
@@ -232,7 +260,10 @@ function getDurationLabel(startLocal?: string | null, endLocal?: string | null) 
   return `${minutes} minutes`;
 }
 
-function normalizeEventbriteEvent(event: EventbriteEvent, index: number): SiteEvent {
+function normalizeEventbriteEvent(
+  event: EventbriteEvent,
+  index: number,
+): SiteEvent {
   const type = getEventType(event);
   const dateParts = formatEventDateParts(event.start?.local);
   return {
@@ -242,7 +273,8 @@ function normalizeEventbriteEvent(event: EventbriteEvent, index: number): SiteEv
     date: dateParts.date,
     time: formatEventTimeRange(event.start?.local, event.end?.local),
     location: getEventLocation(event),
-    description: event.summary || "Event details will be available on Eventbrite.",
+    description:
+      event.summary || "Event details will be available on Eventbrite.",
     isFeatured: index === 0,
     emoji: getEventEmoji(type),
     url: event.url || null,
@@ -253,17 +285,30 @@ function normalizeEventbriteEvent(event: EventbriteEvent, index: number): SiteEv
 export async function getEventsForSite() {
   const config = getEventbriteConfig();
   if (!config.token) {
-    return { events: fallbackEvents, source: "fallback" as const, configured: false };
+    return {
+      events: fallbackEvents,
+      source: "fallback" as const,
+      configured: false,
+    };
   }
-  const organizationId = await resolveOrganizationId(config.token, config.organizationId);
-  if (!organizationId) throw new Error("No Eventbrite organization was found for this token.");
+  const organizationId = await resolveOrganizationId(
+    config.token,
+    config.organizationId,
+  );
+  if (!organizationId)
+    throw new Error("No Eventbrite organization was found for this token.");
 
-  const url = new URL(`${EVENTBRITE_BASE_URL}/organizations/${organizationId}/events/`);
+  const url = new URL(
+    `${EVENTBRITE_BASE_URL}/organizations/${organizationId}/events/`,
+  );
   url.searchParams.set("status", config.status);
   url.searchParams.set("expand", "venue,format,logo");
   url.searchParams.set("order_by", "start_asc");
 
-  const data = await eventbriteFetch<EventbriteListResponse>(url.toString(), config.token);
+  const data = await eventbriteFetch<EventbriteListResponse>(
+    url.toString(),
+    config.token,
+  );
   const events = (data.events || []).map(normalizeEventbriteEvent);
   return { events, source: "eventbrite" as const, configured: true };
 }
@@ -273,23 +318,32 @@ export async function getEventForSite(eventId: string) {
   return events.find((event) => event.id === eventId) ?? null;
 }
 
-export async function getEventDetailsForSite(eventId: string): Promise<SiteEventDetails | null> {
+export async function getEventDetailsForSite(
+  eventId: string,
+): Promise<SiteEventDetails | null> {
   const { token } = getEventbriteConfig();
   if (!token) return null;
 
   const eventUrl = new URL(`${EVENTBRITE_BASE_URL}/events/${eventId}/`);
-  eventUrl.searchParams.set("expand", "organizer,venue,format,refund_policy,ticket_availability,logo");
+  eventUrl.searchParams.set(
+    "expand",
+    "organizer,venue,format,refund_policy,ticket_availability,logo",
+  );
 
   const [event, description] = await Promise.all([
     eventbriteFetch<EventbriteEvent>(eventUrl.toString(), token),
-    eventbriteFetch<EventbriteDescriptionResponse>(`${EVENTBRITE_BASE_URL}/events/${eventId}/description/`, token),
+    eventbriteFetch<EventbriteDescriptionResponse>(
+      `${EVENTBRITE_BASE_URL}/events/${eventId}/description/`,
+      token,
+    ),
   ]);
 
   return {
     organizerName: event.organizer?.name || null,
     organizerUrl: event.organizer?.url || null,
     refundPolicy: event.refund_policy?.refund_policy_description || null,
-    hasAvailableTickets: event.ticket_availability?.has_available_tickets ?? null,
+    hasAvailableTickets:
+      event.ticket_availability?.has_available_tickets ?? null,
     isSoldOut: event.ticket_availability?.is_sold_out ?? false,
     salesStartDate: event.ticket_availability?.start_sales_date?.local || null,
     capacity: event.capacity ?? null,

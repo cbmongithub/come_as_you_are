@@ -152,39 +152,15 @@ export default function ProgramsPage() {
   return (
     <>
       {/* Header */}
-      <section
-        className="pt-36 pb-16 relative overflow-hidden"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 50% at 30% 0%, oklch(62% 0.07 155 / 0.12), transparent), var(--color-canvas)",
-        }}
-      >
+      <section className="relative overflow-hidden bg-caya-gradient-programs-hero pt-36 pb-16">
         <div className="container-wide">
-          <p
-            className="text-xs uppercase tracking-[0.2em] mb-4"
-            style={{
-              color: "var(--color-clay)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
+          <p className="mb-4 text-xs uppercase tracking-caya-eyebrow font-body text-caya-clay">
             Programs & Sessions
           </p>
-          <h1
-            className="text-[clamp(2.5rem,5vw,4.5rem)] leading-tight mb-4"
-            style={{
-              fontFamily: "var(--font-display)",
-              color: "var(--color-charcoal)",
-            }}
-          >
+          <h1 className="mb-4 text-caya-display-md leading-tight font-display text-caya-charcoal">
             Find your circle.
           </h1>
-          <p
-            className="text-base max-w-xl"
-            style={{
-              color: "var(--color-charcoal-soft)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
+          <p className="max-w-xl text-base font-body text-caya-charcoal-soft">
             Every session is peer-facilitated, intimate, and free of charge.
             Some sessions offer sliding-scale suggested contributions to keep
             the space alive.
@@ -193,14 +169,7 @@ export default function ProgramsPage() {
       </section>
 
       {/* Filters */}
-      <section
-        className="sticky top-18 z-30 py-4 border-b"
-        style={{
-          background: "oklch(97% 0.012 60 / 0.95)",
-          backdropFilter: "blur(12px)",
-          borderColor: "var(--color-sand)",
-        }}
-      >
+      <section className="sticky top-18 z-30 border-b border-caya-sand bg-caya-canvas-95 py-4 backdrop-blur-caya">
         <div className="container-wide flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
           {/* Category pills */}
           <div className="flex flex-wrap gap-2">
@@ -213,12 +182,12 @@ export default function ProgramsPage() {
                   fontFamily: "var(--font-body)",
                   background:
                     activeCategory === cat
-                      ? "var(--color-clay)"
-                      : "var(--color-sand)",
+                      ? "var(--color-caya-clay)"
+                      : "var(--color-caya-sand)",
                   color:
                     activeCategory === cat
-                      ? "var(--color-warm-white)"
-                      : "var(--color-charcoal-soft)",
+                      ? "var(--color-caya-warm-white)"
+                      : "var(--color-caya-charcoal-soft)",
                 }}
               >
                 {cat}
@@ -237,9 +206,9 @@ export default function ProgramsPage() {
               className="text-xs px-3 py-2 rounded-full border appearance-none cursor-pointer"
               style={{
                 fontFamily: "var(--font-body)",
-                borderColor: "var(--color-sand-deep)",
-                color: "var(--color-charcoal-soft)",
-                background: "var(--color-warm-white)",
+                borderColor: "var(--color-caya-sand-deep)",
+                color: "var(--color-caya-charcoal-soft)",
+                background: "var(--color-caya-warm-white)",
               }}
             >
               {locations.map((l) => (
@@ -255,8 +224,7 @@ export default function ProgramsPage() {
             <div className="relative">
               <Search
                 size={13}
-                className="absolute left-3 top-1/2 -translate-y-1/2"
-                style={{ color: "var(--color-charcoal-soft)" }}
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-caya-charcoal-soft"
               />
               <input
                 type="text"
@@ -266,9 +234,9 @@ export default function ProgramsPage() {
                 className="pl-8 pr-4 py-2 ring-1 ring-clay-light rounded-full border text-xs outline-none focus:ring-1"
                 style={{
                   fontFamily: "var(--font-body)",
-                  borderColor: "var(--color-sand-deep)",
-                  color: "var(--color-charcoal)",
-                  background: "var(--color-warm-white)",
+                  borderColor: "var(--color-caya-sand-deep)",
+                  color: "var(--color-caya-charcoal)",
+                  background: "var(--color-caya-warm-white)",
                   width: "180px",
                 }}
               />
@@ -280,7 +248,7 @@ export default function ProgramsPage() {
       {/* Grid */}
       <section
         className="section-pad"
-        style={{ background: "var(--color-canvas)" }}
+        style={{ background: "var(--color-caya-canvas)" }}
       >
         <div className="container-wide">
           {filtered.length > 0 ? (
@@ -288,7 +256,7 @@ export default function ProgramsPage() {
               <p
                 className="text-xs mb-6"
                 style={{
-                  color: "var(--color-charcoal-soft)",
+                  color: "var(--color-caya-charcoal-soft)",
                   fontFamily: "var(--font-body)",
                 }}
               >
@@ -307,7 +275,7 @@ export default function ProgramsPage() {
                 className="text-4xl mb-4"
                 style={{
                   fontFamily: "var(--font-display)",
-                  color: "var(--color-charcoal)",
+                  color: "var(--color-caya-charcoal)",
                 }}
               >
                 No sessions found.
@@ -315,7 +283,7 @@ export default function ProgramsPage() {
               <p
                 className="text-sm"
                 style={{
-                  color: "var(--color-charcoal-soft)",
+                  color: "var(--color-caya-charcoal-soft)",
                   fontFamily: "var(--font-body)",
                 }}
               >
@@ -327,7 +295,7 @@ export default function ProgramsPage() {
                     setSearchQuery("");
                   }}
                   className="underline"
-                  style={{ color: "var(--color-clay)" }}
+                  style={{ color: "var(--color-caya-clay)" }}
                 >
                   clear all
                 </button>
@@ -339,14 +307,14 @@ export default function ProgramsPage() {
       </section>
 
       {/* Request a session CTA */}
-      <section className="py-16" style={{ background: "var(--color-sand)" }}>
+      <section className="bg-caya-sand py-16">
         <div className="container-wide flex flex-col md:flex-row gap-6 items-center justify-between">
           <div>
             <h3
               className="text-2xl mb-1"
               style={{
                 fontFamily: "var(--font-display)",
-                color: "var(--color-charcoal)",
+                color: "var(--color-caya-charcoal)",
               }}
             >
               Don&apos;t see what you need?
@@ -354,7 +322,7 @@ export default function ProgramsPage() {
             <p
               className="text-sm"
               style={{
-                color: "var(--color-charcoal-soft)",
+                color: "var(--color-caya-charcoal-soft)",
                 fontFamily: "var(--font-body)",
               }}
             >
@@ -362,11 +330,11 @@ export default function ProgramsPage() {
             </p>
           </div>
           <a
-            href="mailto:sessions@comeasyouare.co"
+            href="mailto:ashley@supportcomeasyou.org"
             className="px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 hover:shadow-(--shadow-warm) hover:scale-[1.02]"
             style={{
-              background: "var(--color-clay)",
-              color: "var(--color-warm-white)",
+              background: "var(--color-caya-clay)",
+              color: "var(--color-caya-warm-white)",
               fontFamily: "var(--font-body)",
             }}
           >

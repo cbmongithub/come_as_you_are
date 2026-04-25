@@ -1,17 +1,17 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 
-interface StripeSignatureParts {
+type StripeSignatureParts = {
   timestamp?: string;
   signatures: string[];
-}
+};
 
-export interface StripeWebhookEvent<T = unknown> {
+export type StripeWebhookEvent<T = unknown> = {
   id: string;
   type: string;
   data: {
     object: T;
   };
-}
+};
 
 function parseStripeSignatureHeader(header: string): StripeSignatureParts {
   return header.split(",").reduce<StripeSignatureParts>(
@@ -32,7 +32,11 @@ function parseStripeSignatureHeader(header: string): StripeSignatureParts {
   );
 }
 
-function verifySignature(payload: string, signatureHeader: string, secret: string) {
+function verifySignature(
+  payload: string,
+  signatureHeader: string,
+  secret: string,
+) {
   const { timestamp, signatures } = parseStripeSignatureHeader(signatureHeader);
 
   if (!timestamp || signatures.length === 0) {

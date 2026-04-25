@@ -12,11 +12,11 @@ export const metadata: Metadata = {
   description: "Choose a session time after payment.",
 };
 
-interface BookSuccessPageProps {
+type BookSuccessPageProps = {
   searchParams: Promise<{
     session_id?: string | string[];
   }>;
-}
+};
 
 export default async function BookSuccessPage({
   searchParams,
@@ -53,14 +53,14 @@ export default async function BookSuccessPage({
   return (
     <section
       className="pt-36 pb-24"
-      style={{ background: "var(--color-canvas)" }}
+      style={{ background: "var(--color-caya-canvas)" }}
     >
       <div className="container-wide">
         <div className="mx-auto max-w-3xl">
           <p
             className="mb-4 text-xs uppercase tracking-[0.2em]"
             style={{
-              color: "var(--color-clay)",
+              color: "var(--color-caya-clay)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -69,16 +69,18 @@ export default async function BookSuccessPage({
           <h1
             className="mb-5 text-[clamp(3rem,6vw,5.5rem)] leading-tight"
             style={{
-              color: "var(--color-charcoal)",
+              color: "var(--color-caya-charcoal)",
               fontFamily: "var(--font-display)",
             }}
           >
-            {isPaid ? "Choose your session time." : "We need to verify payment."}
+            {isPaid
+              ? "Choose your session time."
+              : "We need to verify payment."}
           </h1>
           <p
             className="max-w-2xl text-lg leading-relaxed"
             style={{
-              color: "var(--color-charcoal-soft)",
+              color: "var(--color-caya-charcoal-soft)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -98,15 +100,15 @@ export default async function BookSuccessPage({
               <div
                 className="rounded-(--radius-card) p-8 shadow-(--shadow-warm)"
                 style={{
-                  background: "var(--color-warm-white)",
-                  border: "1px solid var(--color-sand)",
+                  background: "var(--color-caya-warm-white)",
+                  border: "1px solid var(--color-caya-sand)",
                 }}
               >
                 {error ? (
                   <p
                     className="mb-5 leading-relaxed"
                     style={{
-                      color: "var(--color-clay-dark)",
+                      color: "var(--color-caya-clay-dark)",
                       fontFamily: "var(--font-body)",
                     }}
                   >
@@ -118,7 +120,7 @@ export default async function BookSuccessPage({
                     <dt
                       className="text-xs uppercase tracking-[0.18em]"
                       style={{
-                        color: "var(--color-clay)",
+                        color: "var(--color-caya-clay)",
                         fontFamily: "var(--font-body)",
                       }}
                     >
@@ -127,7 +129,7 @@ export default async function BookSuccessPage({
                     <dd
                       className="mt-2 text-2xl"
                       style={{
-                        color: "var(--color-charcoal)",
+                        color: "var(--color-caya-charcoal)",
                         fontFamily: "var(--font-display)",
                       }}
                     >
@@ -138,16 +140,16 @@ export default async function BookSuccessPage({
                     <dt
                       className="text-xs uppercase tracking-[0.18em]"
                       style={{
-                        color: "var(--color-clay)",
+                        color: "var(--color-caya-clay)",
                         fontFamily: "var(--font-body)",
                       }}
                     >
                       Email
                     </dt>
                     <dd
-                      className="mt-2 break-words text-2xl"
+                      className="mt-2 wrap-break-word text-2xl"
                       style={{
-                        color: "var(--color-charcoal)",
+                        color: "var(--color-caya-charcoal)",
                         fontFamily: "var(--font-display)",
                       }}
                     >

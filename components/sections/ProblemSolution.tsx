@@ -1,36 +1,24 @@
+import Image from "next/image";
+import { Reveal } from "@/components/ui/Reveal";
+import memberImage from "@/app/assets/img/member.jpg";
+
 export function ProblemSolution() {
   return (
     <>
       {/* Problem */}
       <section
         id="problem"
-        className="section-pad"
-        style={{
-          background:
-            "linear-gradient(to bottom, var(--color-canvas), oklch(93% 0.015 200 / 0.3))",
-        }}
+        className="section-pad bg-caya-gradient-canvas-mist"
       >
         <div className="container-wide">
-          <div className="max-w-2xl mx-auto text-center mb-16">
-            <p
-              className="text-xs uppercase tracking-[0.2em] mb-4"
-              style={{
-                color: "var(--color-clay)",
-                fontFamily: "var(--font-body)",
-              }}
-            >
+          <Reveal className="mx-auto mb-16 max-w-2xl text-center">
+            <p className="mb-4 text-xs uppercase tracking-caya-eyebrow font-body text-caya-clay">
               The reality
             </p>
-            <h2
-              className="text-[clamp(2rem,4vw,3.5rem)] leading-tight"
-              style={{
-                fontFamily: "var(--font-display)",
-                color: "var(--color-charcoal)",
-              }}
-            >
+            <h2 className="text-caya-heading-xl leading-tight font-display text-caya-charcoal">
               Mental health care has a belonging problem
             </h2>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -49,184 +37,95 @@ export function ProblemSolution() {
                 label: "average cost of a therapy session",
                 note: "before insurance, if you have it",
               },
-            ].map(({ stat, label, note }) => (
-              <div
-                key={stat}
-                className="p-8 rounded-(--radius-card) text-center"
-                style={{
-                  background: "var(--color-warm-white)",
-                  border: "1px solid var(--color-sand)",
-                }}
-              >
-                <p
-                  className="text-5xl mb-3 italic"
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    color: "var(--color-clay)",
-                  }}
-                >
-                  {stat}
-                </p>
-                <p
-                  className="text-sm font-medium mb-2"
-                  style={{
-                    color: "var(--color-charcoal)",
-                    fontFamily: "var(--font-body)",
-                  }}
-                >
-                  {label}
-                </p>
-                <p
-                  className="text-xs"
-                  style={{
-                    color: "var(--color-charcoal-soft)",
-                    fontFamily: "var(--font-body)",
-                  }}
-                >
-                  {note}
-                </p>
-              </div>
+            ].map(({ stat, label, note }, index) => (
+              <Reveal key={stat} delay={0.06 * index} y={20}>
+                <div className="rounded-(--radius-card) border border-caya-sand bg-caya-warm-white p-8 text-center">
+                  <p className="mb-3 text-5xl italic font-display text-caya-clay">
+                    {stat}
+                  </p>
+                  <p className="mb-2 text-sm font-medium font-body text-caya-charcoal">
+                    {label}
+                  </p>
+                  <p className="text-xs font-body text-caya-charcoal-soft">
+                    {note}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Solution */}
-      <section
-        id="solution"
-        className="section-pad"
-        style={{ background: "var(--color-canvas)" }}
-      >
+      <section id="solution" className="section-pad bg-caya-canvas">
         <div className="container-wide">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Visual block */}
-            <div className="relative">
-              <div
-                className="aspect-4/5 rounded-(--radius-card) overflow-hidden"
-                style={{
-                  background:
-                    "linear-gradient(135deg, var(--color-sand) 0%, var(--color-clay-light) 50%, var(--color-sage-light) 100%)",
-                }}
-              >
-                {/* Decorative circle composition */}
+            <Reveal className="relative" y={32} scale={0.98}>
+              <div className="aspect-4/5 rounded-(--radius-card) overflow-hidden bg-caya-gradient-solution-card">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div
-                    className="w-64 h-64 rounded-full opacity-30"
-                    style={{ background: "var(--color-canvas)" }}
-                  />
+                  <div className="relative h-64 w-64 overflow-hidden rounded-full border-4 border-caya-white-55 shadow-caya-portrait">
+                    <Image
+                      src={memberImage}
+                      alt="Community member portrait"
+                      fill
+                      sizes="256px"
+                      className="object-cover"
+                    />
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 bg-caya-gradient-member-overlay"
+                    />
+                  </div>
                 </div>
-                <div className="absolute bottom-8 left-8 right-8">
-                  <blockquote
-                    className="text-2xl leading-tight"
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      color: "var(--color-warm-white)",
-                      fontStyle: "italic",
-                    }}
-                  >
-                    "I finally felt like I didn't have to perform being okay."
-                  </blockquote>
-                  <p
-                    className="mt-3 text-xs"
-                    style={{
-                      color: "oklch(99% 0.005 80 / 0.7)",
-                      fontFamily: "var(--font-body)",
-                    }}
-                  >
-                    — Community member
-                  </p>
+                <div className="absolute inset-x-0 bottom-0">
+                  <div className="bg-caya-testimonial-panel px-8 pb-8 pt-24">
+                    <blockquote className="max-w-caya-testimonial text-caya-testimonial-quote leading-[1.16] font-display italic text-caya-warm-white">
+                      "I finally felt like I didn't have to perform being okay."
+                    </blockquote>
+                    <p className="mt-4 text-sm font-body text-caya-warm-white-90">
+                      — Community member
+                    </p>
+                  </div>
                 </div>
               </div>
-
-              {/* Floating badge */}
-              <div
-                className="absolute -top-4 -right-4 w-24 h-24 rounded-full flex flex-col items-center justify-center text-center shadow-(--shadow-warm)"
-                style={{
-                  background: "var(--color-charcoal)",
-                  color: "var(--color-sand)",
-                }}
-              >
-                <span
-                  className="text-lg leading-none italic"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  Free
-                </span>
-                <span
-                  className="text-[9px] tracking-widest uppercase mt-0.5"
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    color: "oklch(88% 0.04 75 / 0.7)",
-                  }}
-                >
-                  to start
-                </span>
-              </div>
-            </div>
+            </Reveal>
 
             {/* Text block */}
-            <div>
-              <p
-                className="text-xs uppercase tracking-[0.2em] mb-4"
-                style={{
-                  color: "var(--color-clay)",
-                  fontFamily: "var(--font-body)",
-                }}
-              >
-                Our answer
-              </p>
-              <h2
-                className="text-[clamp(2rem,3.5vw,3rem)] leading-tight mb-6"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  color: "var(--color-charcoal)",
-                }}
-              >
-                A space between alone and therapy
-              </h2>
-              <p
-                className="text-base leading-relaxed mb-6"
-                style={{
-                  color: "var(--color-charcoal-soft)",
-                  fontFamily: "var(--font-body)",
-                }}
-              >
-                Come As You Are is a peer-led community that fills the gap. Not
-                a clinical service — a living room. A place where people
-                who&apos;ve been through hard things hold space for others doing
-                the same.
-              </p>
+            <Reveal className="" delay={0.08} y={30}>
+              <div>
+                <p className="mb-4 text-xs uppercase tracking-caya-eyebrow font-body text-caya-clay">
+                  Our answer
+                </p>
+                <h2 className="mb-6 text-caya-heading-lg leading-tight font-display text-caya-charcoal">
+                  A space between alone and therapy
+                </h2>
+                <p className="mb-6 text-base leading-relaxed font-body text-caya-charcoal-soft">
+                  Come As You Are is a peer-led community that fills the gap.
+                  Not a clinical service — a living room. A place where people
+                  who&apos;ve been through hard things hold space for others
+                  doing the same.
+                </p>
 
-              <div className="flex flex-col gap-4 mb-8">
-                {[
-                  "Facilitated peer circles — not group therapy",
-                  "Trained community hosts, not clinicians",
-                  "Free and sliding-scale options for all",
-                  "A physical space designed for calm",
-                ].map((point) => (
-                  <div key={point} className="flex items-start gap-3">
-                    <span
-                      className="mt-1 w-4 h-4 rounded-full shrink-0 flex items-center justify-center text-[10px]"
-                      style={{
-                        background: "var(--color-sage-light)",
-                        color: "var(--color-sage)",
-                      }}
-                    >
-                      ✓
-                    </span>
-                    <span
-                      className="text-sm"
-                      style={{
-                        color: "var(--color-charcoal)",
-                        fontFamily: "var(--font-body)",
-                      }}
-                    >
-                      {point}
-                    </span>
-                  </div>
-                ))}
+                <div className="flex flex-col gap-4 mb-8">
+                  {[
+                    "Facilitated peer circles — not group therapy",
+                    "Trained community hosts, not clinicians",
+                    "Free and sliding-scale options for all",
+                    "A physical space designed for calm",
+                  ].map((point) => (
+                    <div key={point} className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-caya-clay text-caya-2xs text-caya-warm-white shadow-caya-check">
+                        ✓
+                      </span>
+                      <span className="text-sm font-body text-caya-charcoal">
+                        {point}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
