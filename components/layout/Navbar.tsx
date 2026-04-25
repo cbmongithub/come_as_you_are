@@ -7,13 +7,7 @@ import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
-const navLinks = [
-  { href: "/about", label: "About" },
-  //{ href: "/programs", label: "Programs" },
-  //{ href: "/the-space", label: "The Space" },
-  { href: "/events", label: "Events" },
-  //{ href: "/support", label: "Support Us" },
-];
+const navLinks = [{ href: "/events", label: "Events" }];
 
 export function Navbar() {
   const pathname = usePathname();
@@ -34,6 +28,18 @@ export function Navbar() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHomePage]);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <>
@@ -118,7 +124,7 @@ export function Navbar() {
         />
         <div
           className={cn(
-            "absolute top-0 right-0 h-full w-72 bg-caya-canvas px-8 pb-12 pt-24 transition-transform duration-500",
+            "absolute inset-y-0 right-0 flex h-full w-[min(22rem,calc(100vw-2rem))] max-w-full flex-col overflow-y-auto bg-caya-canvas px-6 pb-8 pt-24 shadow-(--shadow-warm) transition-transform duration-500 sm:px-8 sm:pt-28",
             open ? "translate-x-0" : "translate-x-full",
           )}
         >
@@ -134,7 +140,7 @@ export function Navbar() {
               </Link>
             ))}
           </div>
-          <div className="mt-auto">
+          <div className="mt-auto pt-8">
             <Link
               href="/book"
               className="block w-full rounded-full bg-caya-clay px-5 py-3 text-center text-sm font-medium font-body text-caya-warm-white"

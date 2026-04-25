@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 const typeColors: Record<SiteEvent["type"], string> = {
-  Community: "bg-caya-sage-30 text-caya-sage",
+  Community: "bg-caya-terra-soft text-caya-terra",
   Conversation: "bg-caya-clay-soft text-caya-clay",
   Workshop: "bg-caya-gold-soft text-caya-gold-dark",
   Training: "bg-caya-sand-80 text-caya-earth-dark",
@@ -84,9 +84,7 @@ function DetailChip({
   value: string;
 }) {
   return (
-    <div
-      className="rounded-2xl border border-caya-sand-18 bg-caya-warm-white-70 p-4"
-    >
+    <div className="rounded-2xl border border-caya-sand-18 bg-caya-warm-white-70 p-4">
       <div className="flex items-center gap-2 mb-2">
         <Icon size={14} className="text-caya-clay" />
         <span className="text-caya-micro uppercase tracking-caya-kicker font-body text-caya-charcoal-70">
@@ -148,9 +146,7 @@ function FeaturedDetails({ details }: { details: SiteEventDetails | null }) {
       ) : null}
 
       {details.fullDescriptionHtml ? (
-        <details
-          className="group overflow-hidden rounded-2xl border border-caya-sand-18 bg-caya-warm-white-58"
-        >
+        <details className="group overflow-hidden rounded-2xl border border-caya-sand-18 bg-caya-warm-white-58">
           <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 font-body text-caya-charcoal">
             <span className="text-sm font-medium">
               See more about this event
@@ -222,7 +218,9 @@ export default async function EventsPage() {
                 <div>
                   <div className="flex items-center gap-3 mb-6">
                     <span className="text-4xl">{featured.emoji}</span>
-                    <span className={`rounded-full px-3 py-1 text-xs font-body ${typeColors[featured.type] ?? "bg-caya-sand text-caya-charcoal"}`}>
+                    <span
+                      className={`rounded-full px-3 py-1 text-xs font-body ${typeColors[featured.type] ?? "bg-caya-sand text-caya-charcoal"}`}
+                    >
                       {featured.type}
                     </span>
                   </div>
@@ -298,14 +296,17 @@ export default async function EventsPage() {
 
               <div className="flex flex-col gap-4">
                 {rest.map((event, index) => {
-                  const colors = typeColors[event.type] ?? "bg-caya-sand text-caya-charcoal";
+                  const colors =
+                    typeColors[event.type] ?? "bg-caya-sand text-caya-charcoal";
                   const ticketHref = `/api/events/${event.id}/ticket`;
                   const row = (
                     <>
                       <span className="text-3xl shrink-0">{event.emoji}</span>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-3 mb-1 flex-wrap">
-                          <span className={`rounded-full px-2.5 py-0.5 text-xs font-body ${colors}`}>
+                          <span
+                            className={`rounded-full px-2.5 py-0.5 text-xs font-body ${colors}`}
+                          >
                             {event.type}
                           </span>
                           <h3 className="text-xl font-display text-caya-charcoal transition-colors group-hover:text-clay">
@@ -367,7 +368,7 @@ export default async function EventsPage() {
         </div>
       </section>
 
-      <section id="newsletter" className="section-pad bg-caya-sand">
+      {/* <section id="newsletter" className="section-pad bg-caya-sand">
         <div className="container-wide max-w-xl text-center mx-auto">
           <Reveal y={20}>
             <h2 className="mb-3 text-4xl font-display text-caya-charcoal">
@@ -401,7 +402,7 @@ export default async function EventsPage() {
             </p>
           </Reveal>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

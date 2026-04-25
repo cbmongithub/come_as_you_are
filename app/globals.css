@@ -483,6 +483,18 @@
     font-size: clamp(2rem, 3.5vw, 3rem);
   }
 
+  .text-caya-heading-founder {
+    font-size: clamp(2.7rem, 4.8vw, 4.4rem);
+  }
+
+  .text-caya-testimonial-quote {
+    font-size: clamp(1.7rem, 3vw, 2.15rem);
+  }
+
+  .max-w-caya-testimonial {
+    max-width: 18ch;
+  }
+
   .bg-caya-gradient-canvas-sand {
     background: linear-gradient(
       to bottom,

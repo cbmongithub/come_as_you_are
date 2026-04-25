@@ -80,11 +80,11 @@ export function ProblemSolution() {
                 </div>
                 <div className="absolute inset-x-0 bottom-0">
                   <div className="bg-caya-testimonial-panel px-8 pb-8 pt-24">
-                    <blockquote className="max-w-[18ch] text-[1.85rem] leading-[1.16] font-display italic text-caya-warm-white">
-                    "I finally felt like I didn't have to perform being okay."
+                    <blockquote className="max-w-caya-testimonial text-caya-testimonial-quote leading-[1.16] font-display italic text-caya-warm-white">
+                      "I finally felt like I didn't have to perform being okay."
                     </blockquote>
                     <p className="mt-4 text-sm font-body text-caya-warm-white-90">
-                    — Community member
+                      — Community member
                     </p>
                   </div>
                 </div>

@@ -330,7 +330,7 @@ export default function ProgramsPage() {
             </p>
           </div>
           <a
-            href="mailto:sessions@comeasyouare.co"
+            href="mailto:ashley@supportcomeasyou.org"
             className="px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 hover:shadow-(--shadow-warm) hover:scale-[1.02]"
             style={{
               background: "var(--color-caya-clay)",

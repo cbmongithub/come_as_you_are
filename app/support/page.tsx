@@ -456,7 +456,7 @@ export default function SupportPage() {
 
           <div className="mt-10 text-center">
             <a
-              href="mailto:partners@comeasyouare.co"
+              href="mailto:ashley@supportcomeasyou.org"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-medium transition-all duration-300 hover:shadow-warm hover:scale-[1.02]"
               style={{
                 background: "var(--color-caya-clay)",

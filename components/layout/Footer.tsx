@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Heart } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 
 function InstagramIcon({ size = 16 }: { size?: number }) {
@@ -32,7 +32,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           {/* Brand */}
           <div className="md:col-span-5">
-            <Link href="/" className="mb-5 inline-block">
+            <Link href="/#hero" className="mb-5 inline-block">
               <Logo
                 className="h-12 w-auto"
                 wordmark="var(--color-caya-sand)"
@@ -40,22 +40,29 @@ export function Footer() {
                 foreground="var(--color-caya-sand)"
               />
             </Link>
-            <p className="mb-6 max-w-xs text-sm leading-relaxed font-body text-caya-sand-60">
+            <p className="mb-6 max-w-xs text-sm leading-relaxed font-body text-caya-sand-72">
               A peer-led mental wellness community. This is not therapy — this
               is belonging. Come as you are, stay as long as you need.
             </p>
             <div className="flex gap-4">
               {[
-                { icon: InstagramIcon, label: "Instagram", href: "#" },
+                {
+                  icon: InstagramIcon,
+                  label: "Instagram",
+                  target: "_blank",
+                  href: "https://www.instagram.com/sunflowerbabbbe",
+                },
                 {
                   icon: Mail,
                   label: "Email",
-                  href: "mailto:hello@comeasyouare.co",
+                  target: "_blank",
+                  href: "mailto:ashley@supportcomeasyou.org",
                 },
-              ].map(({ icon: Icon, label, href }) => (
+              ].map(({ icon: Icon, label, href, target }) => (
                 <a
                   key={label}
                   href={href}
+                  target={target}
                   aria-label={label}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-caya-sand-20 bg-caya-sand-10 text-caya-sand transition-all duration-300 hover:scale-110"
                 >
@@ -71,33 +78,34 @@ export function Footer() {
               {
                 title: "Explore",
                 links: [
-                  { href: "/about", label: "About Us" },
-                  { href: "/programs", label: "Programs" },
-                  { href: "/the-space", label: "The Space" },
                   { href: "/events", label: "Events" },
+                  { href: "/book", label: "Book a Session" },
+                  { href: "/about", label: "About" },
                 ],
               },
               {
-                title: "Community",
+                title: "What We Are",
                 links: [
-                  { href: "/support", label: "Support the Space" },
-                  { href: "/support#sponsor", label: "Sponsorships" },
-                  { href: "/support#donate", label: "Donate" },
-                  { href: "/support#partners", label: "Partners" },
+                  { href: "/#what-it-is", label: "Peer-led support" },
+                  { href: "/#problem", label: "The reality" },
+                  { href: "/#solution", label: "What it looks like" },
                 ],
               },
               {
                 title: "Connect",
                 links: [
+                  { href: "/events", label: "Upcoming Event" },
                   { href: "/book", label: "Book a Session" },
-                  { href: "#newsletter", label: "Newsletter" },
-                  { href: "mailto:hello@comeasyouare.co", label: "Contact" },
-                  { href: "#crisis", label: "Crisis Resources" },
+                  {
+                    href: "mailto:ashley@supportcomeasyou.org",
+                    label: "Contact",
+                  },
+                  // { href: "#crisis", label: "Crisis Resources" },
                 ],
               },
             ].map((col) => (
               <div key={col.title}>
-                <p className="mb-4 text-xs font-medium uppercase tracking-caya-label font-body text-caya-sand-40">
+                <p className="mb-4 text-xs font-medium uppercase tracking-caya-label font-body text-caya-sand-50">
                   {col.title}
                 </p>
                 <ul className="flex flex-col gap-2.5">
@@ -105,7 +113,7 @@ export function Footer() {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm font-body text-caya-sand-60 transition-colors duration-200 hover:text-caya-clay-light"
+                        className="text-sm font-body text-caya-sand-72 transition-colors duration-200 hover:text-caya-clay-light"
                       >
                         {link.label}
                       </Link>
@@ -126,7 +134,7 @@ export function Footer() {
             <p className="mb-1 text-sm font-medium font-body text-caya-clay-light">
               Need immediate support?
             </p>
-            <p className="text-xs font-body text-caya-sand-50">
+            <p className="text-xs font-body text-caya-sand-60">
               We are not a crisis service. If you are in distress, please reach
               out to a professional.
             </p>
@@ -141,22 +149,9 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-caya-sand-10 pt-8 sm:flex-row">
-          <p className="flex items-center gap-1.5 text-xs font-body text-caya-sand-35">
-            © 2025 Come As You Are. Made with{" "}
-            <Heart size={11} className="text-caya-clay-light" /> for the
-            community.
+          <p className="flex items-center gap-1.5 text-xs font-body text-caya-sand-50">
+            © 2025 Come As You Are
           </p>
-          <div className="flex gap-6">
-            {["Privacy", "Accessibility", "Terms"].map((item) => (
-              <Link
-                key={item}
-                href="#"
-                className="text-xs font-body text-caya-sand-35 transition-colors duration-200 hover:text-caya-clay-light"
-              >
-                {item}
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
     </footer>
