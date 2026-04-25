@@ -2,27 +2,30 @@ import { cn } from "@/lib/utils";
 import { Slot } from "@radix-ui/react-slot";
 import { type ButtonHTMLAttributes, forwardRef } from "react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "primary" | "outline" | "ghost" | "sand";
   size?: "sm" | "md" | "lg";
   asChild?: boolean;
-}
+};
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", size = "md", asChild = false, ...props }, ref) => {
+  (
+    { className, variant = "primary", size = "md", asChild = false, ...props },
+    ref,
+  ) => {
     const Comp = asChild ? Slot : "button";
 
     const base =
-      "inline-flex items-center justify-center gap-2 font-medium rounded-full transition-all duration-300 cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(55%_0.12_38)] disabled:opacity-50 disabled:pointer-events-none";
+      "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 cursor-pointer select-none font-body focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-caya-clay disabled:opacity-50 disabled:pointer-events-none";
 
     const variants = {
       primary:
-        "bg-[oklch(55%_0.12_38)] text-[oklch(99%_0.005_80)] hover:bg-[oklch(48%_0.11_38)] hover:shadow-[0_4px_20px_oklch(55%_0.12_38/0.3)] hover:scale-[1.02]",
+        "bg-caya-clay text-caya-warm-white hover-scale-caya hover:bg-caya-clay-dark hover:shadow-caya-button",
       outline:
-        "border border-[oklch(55%_0.12_38)] text-[oklch(55%_0.12_38)] hover:bg-[oklch(55%_0.12_38/0.08)]",
+        "border border-caya-clay text-caya-clay hover:bg-caya-clay-8",
       ghost:
-        "text-[oklch(38%_0.02_60)] hover:bg-[oklch(88%_0.04_75/0.5)] hover:text-[oklch(55%_0.12_38)]",
-      sand: "bg-[oklch(88%_0.04_75)] text-[oklch(22%_0.02_60)] hover:bg-[oklch(82%_0.06_72)] hover:scale-[1.02]",
+        "text-caya-charcoal-soft hover:bg-caya-sand-50 hover:text-caya-clay",
+      sand: "bg-caya-sand text-caya-charcoal hover-scale-caya hover:bg-caya-sand-deep",
     };
 
     const sizes = {
@@ -35,11 +38,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         ref={ref}
         className={cn(base, variants[variant], sizes[size], className)}
-        style={{ fontFamily: "var(--font-body)" }}
         {...props}
       />
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

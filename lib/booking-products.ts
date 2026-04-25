@@ -15,7 +15,7 @@ export const bookingProducts = [
     checkoutMode: "subscription",
     envKey: "STRIPE_PRICE_ONGOING_WEEKLY_SUPPORT_MONTHLY",
     name: "Ongoing Weekly Support (Monthly Package)",
-    priceLabel: "$350",
+    priceLabel: "$444",
     durationLabel: "Monthly package",
     durationMinutes: 60,
     description:
@@ -26,7 +26,7 @@ export const bookingProducts = [
     checkoutMode: "payment",
     envKey: "STRIPE_PRICE_30_MIN_SUPPORT_CLARITY_SESSION",
     name: "30-min Support & Clarity Session",
-    priceLabel: "$40",
+    priceLabel: "$50",
     durationLabel: "30 minutes",
     durationMinutes: 30,
     description:
@@ -37,7 +37,7 @@ export const bookingProducts = [
     checkoutMode: "payment",
     envKey: "STRIPE_PRICE_EMERGENCY_SAME_DAY_SUPPORT_SESSION",
     name: "Emergency / Same-Day Support Session",
-    priceLabel: "$120",
+    priceLabel: "$100",
     durationLabel: "Same-day support",
     durationMinutes: 60,
     description:

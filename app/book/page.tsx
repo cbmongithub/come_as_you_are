@@ -19,14 +19,14 @@ export default function BookPage() {
   return (
     <section
       className="pt-36 pb-24"
-      style={{ background: "var(--color-canvas)" }}
+      style={{ background: "var(--color-caya-canvas)" }}
     >
       <div className="container-wide">
         <div className="mx-auto max-w-3xl text-center">
           <p
             className="mb-4 text-xs uppercase tracking-[0.2em]"
             style={{
-              color: "var(--color-clay)",
+              color: "var(--color-caya-clay)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -35,7 +35,7 @@ export default function BookPage() {
           <h1
             className="mb-5 text-[clamp(3rem,6vw,5.5rem)] leading-tight"
             style={{
-              color: "var(--color-charcoal)",
+              color: "var(--color-caya-charcoal)",
               fontFamily: "var(--font-display)",
             }}
           >
@@ -44,7 +44,7 @@ export default function BookPage() {
           <p
             className="mx-auto max-w-xl text-lg leading-relaxed"
             style={{
-              color: "var(--color-charcoal-soft)",
+              color: "var(--color-caya-charcoal-soft)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -57,8 +57,8 @@ export default function BookPage() {
         <div
           className="mx-auto mt-12 max-w-5xl overflow-hidden rounded-(--radius-card) shadow-(--shadow-warm)"
           style={{
-            background: "var(--color-warm-white)",
-            border: "1px solid var(--color-sand)",
+            background: "var(--color-caya-warm-white)",
+            border: "1px solid var(--color-caya-sand)",
           }}
         >
           <div className="grid gap-0 md:grid-cols-3">
@@ -82,12 +82,12 @@ export default function BookPage() {
               <div
                 key={item.step}
                 className="p-8 md:border-r md:last:border-r-0"
-                style={{ borderColor: "var(--color-sand)" }}
+                style={{ borderColor: "var(--color-caya-sand)" }}
               >
                 <p
                   className="mb-5 text-xs uppercase tracking-[0.2em]"
                   style={{
-                    color: "var(--color-clay)",
+                    color: "var(--color-caya-clay)",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -96,7 +96,7 @@ export default function BookPage() {
                 <h2
                   className="mb-3 text-3xl"
                   style={{
-                    color: "var(--color-charcoal)",
+                    color: "var(--color-caya-charcoal)",
                     fontFamily: "var(--font-display)",
                   }}
                 >
@@ -105,7 +105,7 @@ export default function BookPage() {
                 <p
                   className="text-sm leading-relaxed"
                   style={{
-                    color: "var(--color-charcoal-soft)",
+                    color: "var(--color-caya-charcoal-soft)",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -116,12 +116,12 @@ export default function BookPage() {
           </div>
           <div
             className="flex flex-col items-start justify-between gap-5 border-t p-8 md:flex-row md:items-center"
-            style={{ borderColor: "var(--color-sand)" }}
+            style={{ borderColor: "var(--color-caya-sand)" }}
           >
             <p
               className="max-w-2xl leading-relaxed"
               style={{
-                color: "var(--color-charcoal-soft)",
+                color: "var(--color-caya-charcoal-soft)",
                 fontFamily: "var(--font-body)",
               }}
             >
@@ -138,8 +138,8 @@ export default function BookPage() {
               key={product.id}
               className="flex min-h-full flex-col justify-between rounded-(--radius-card) p-7 shadow-(--shadow-card)"
               style={{
-                background: "var(--color-warm-white)",
-                border: "1px solid var(--color-sand)",
+                background: "var(--color-caya-warm-white)",
+                border: "1px solid var(--color-caya-sand)",
               }}
             >
               <div>
@@ -148,7 +148,7 @@ export default function BookPage() {
                     <p
                       className="text-xs uppercase tracking-[0.18em]"
                       style={{
-                        color: "var(--color-clay)",
+                        color: "var(--color-caya-clay)",
                         fontFamily: "var(--font-body)",
                       }}
                     >
@@ -157,7 +157,7 @@ export default function BookPage() {
                     <h2
                       className="mt-2 text-3xl"
                       style={{
-                        color: "var(--color-charcoal)",
+                        color: "var(--color-caya-charcoal)",
                         fontFamily: "var(--font-display)",
                       }}
                     >
@@ -167,7 +167,7 @@ export default function BookPage() {
                   <p
                     className="text-3xl"
                     style={{
-                      color: "var(--color-charcoal)",
+                      color: "var(--color-caya-charcoal)",
                       fontFamily: "var(--font-display)",
                     }}
                   >
@@ -177,7 +177,7 @@ export default function BookPage() {
                 <p
                   className="leading-relaxed"
                   style={{
-                    color: "var(--color-charcoal-soft)",
+                    color: "var(--color-caya-charcoal-soft)",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -194,7 +194,7 @@ export default function BookPage() {
                   <p
                     className="mt-3 text-xs leading-relaxed"
                     style={{
-                      color: "var(--color-charcoal-soft)",
+                      color: "var(--color-caya-charcoal-soft)",
                       fontFamily: "var(--font-body)",
                     }}
                   >

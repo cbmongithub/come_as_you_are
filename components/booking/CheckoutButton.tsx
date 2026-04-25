@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 
-interface CheckoutButtonProps {
+type CheckoutButtonProps = {
   disabled?: boolean;
   productId: string;
-}
+};
 
 export function CheckoutButton({
   disabled = false,
@@ -61,7 +61,7 @@ export function CheckoutButton({
         <p
           className="max-w-xs text-sm leading-relaxed"
           style={{
-            color: "var(--color-clay-dark)",
+            color: "var(--color-caya-clay-dark)",
             fontFamily: "var(--font-body)",
           }}
         >

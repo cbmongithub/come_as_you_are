@@ -23,7 +23,7 @@ const rooms = [
       "Book for 30 or 60 min slots",
     ],
     emoji: "🌙",
-    accentColor: "var(--color-mist)",
+    accentColor: "var(--color-caya-mist)",
     accentText: "oklch(42% 0.08 200)",
   },
   {
@@ -41,7 +41,7 @@ const rooms = [
     ],
     emoji: "⭕",
     accentColor: "oklch(72% 0.09 38 / 0.15)",
-    accentText: "var(--color-clay)",
+    accentText: "var(--color-caya-clay)",
   },
   {
     id: "lounge",
@@ -87,7 +87,7 @@ export default function TheSpacePage() {
         className="pt-36 pb-24 relative overflow-hidden"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 60% 0%, oklch(82% 0.05 155 / 0.15), transparent), var(--color-canvas)",
+            "radial-gradient(ellipse 80% 60% at 60% 0%, oklch(82% 0.05 155 / 0.15), transparent), var(--color-caya-canvas)",
         }}
       >
         <div className="container-wide grid md:grid-cols-2 gap-12 items-end">
@@ -95,7 +95,7 @@ export default function TheSpacePage() {
             <p
               className="text-xs uppercase tracking-[0.2em] mb-4"
               style={{
-                color: "var(--color-clay)",
+                color: "var(--color-caya-clay)",
                 fontFamily: "var(--font-body)",
               }}
             >
@@ -105,13 +105,13 @@ export default function TheSpacePage() {
               className="text-[clamp(3rem,6vw,5.5rem)] leading-tight"
               style={{
                 fontFamily: "var(--font-display)",
-                color: "var(--color-charcoal)",
+                color: "var(--color-caya-charcoal)",
               }}
             >
               A space that feels like
               <span
                 className="block italic"
-                style={{ color: "var(--color-sage)" }}
+                style={{ color: "var(--color-caya-sage)" }}
               >
                 {" "}
                 exhaling.
@@ -122,7 +122,7 @@ export default function TheSpacePage() {
             <p
               className="text-lg leading-relaxed mb-6"
               style={{
-                color: "var(--color-charcoal-soft)",
+                color: "var(--color-caya-charcoal-soft)",
                 fontFamily: "var(--font-body)",
               }}
             >
@@ -134,8 +134,8 @@ export default function TheSpacePage() {
               <div
                 className="flex items-center gap-2 px-4 py-2 rounded-full text-sm"
                 style={{
-                  background: "var(--color-sand)",
-                  color: "var(--color-charcoal-soft)",
+                  background: "var(--color-caya-sand)",
+                  color: "var(--color-caya-charcoal-soft)",
                   fontFamily: "var(--font-body)",
                 }}
               >
@@ -144,8 +144,8 @@ export default function TheSpacePage() {
               <div
                 className="flex items-center gap-2 px-4 py-2 rounded-full text-sm"
                 style={{
-                  background: "var(--color-sand)",
-                  color: "var(--color-charcoal-soft)",
+                  background: "var(--color-caya-sand)",
+                  color: "var(--color-caya-charcoal-soft)",
                   fontFamily: "var(--font-body)",
                 }}
               >
@@ -159,7 +159,7 @@ export default function TheSpacePage() {
       {/* Rooms */}
       <section
         className="section-pad"
-        style={{ background: "var(--color-canvas)" }}
+        style={{ background: "var(--color-caya-canvas)" }}
       >
         <div className="container-wide">
           <div className="flex flex-col gap-8">
@@ -184,7 +184,7 @@ export default function TheSpacePage() {
                     className="text-3xl mb-2"
                     style={{
                       fontFamily: "var(--font-display)",
-                      color: "var(--color-charcoal)",
+                      color: "var(--color-caya-charcoal)",
                     }}
                   >
                     {room.name}
@@ -204,7 +204,7 @@ export default function TheSpacePage() {
                         key={f}
                         className="flex items-center gap-2 text-sm"
                         style={{
-                          color: "var(--color-charcoal-soft)",
+                          color: "var(--color-caya-charcoal-soft)",
                           fontFamily: "var(--font-body)",
                         }}
                       >
@@ -212,7 +212,7 @@ export default function TheSpacePage() {
                           className="w-4 h-4 rounded-full text-[10px] flex items-center justify-center shrink-0"
                           style={{
                             background: room.accentText,
-                            color: "var(--color-warm-white)",
+                            color: "var(--color-caya-warm-white)",
                           }}
                         >
                           ✓
@@ -245,7 +245,7 @@ export default function TheSpacePage() {
                   <p
                     className="text-base leading-relaxed"
                     style={{
-                      color: "var(--color-charcoal-soft)",
+                      color: "var(--color-caya-charcoal-soft)",
                       fontFamily: "var(--font-body)",
                     }}
                   >
@@ -263,7 +263,7 @@ export default function TheSpacePage() {
         className="section-pad"
         style={{
           background:
-            "linear-gradient(to bottom, var(--color-canvas), var(--color-sand))",
+            "linear-gradient(to bottom, var(--color-caya-canvas), var(--color-caya-sand))",
         }}
       >
         <div className="container-wide text-center max-w-xl mx-auto">
@@ -271,7 +271,7 @@ export default function TheSpacePage() {
             className="text-4xl mb-4"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--color-charcoal)",
+              color: "var(--color-caya-charcoal)",
             }}
           >
             No appointment needed.
@@ -279,7 +279,7 @@ export default function TheSpacePage() {
           <p
             className="text-base leading-relaxed mb-8"
             style={{
-              color: "var(--color-charcoal-soft)",
+              color: "var(--color-caya-charcoal-soft)",
               fontFamily: "var(--font-body)",
             }}
           >

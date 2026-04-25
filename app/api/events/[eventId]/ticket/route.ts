@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { getEventForSite } from "@/lib/eventbrite";
 
-interface RouteContext {
+type RouteContext = {
   params: Promise<{
     eventId: string;
   }>;
-}
+};
 
 export async function GET(_request: Request, context: RouteContext) {
   const { eventId } = await context.params;

@@ -4,25 +4,25 @@ import { useEffect, useMemo, useState } from "react";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
-interface BookingSlot {
+type BookingSlot = {
   start: string;
   end: string;
   label: string;
-}
+};
 
-interface AvailabilityResponse {
+type AvailabilityResponse = {
   date: string;
   timeZone: string;
   durationMinutes: number;
   slots: BookingSlot[];
   error?: string;
-}
+};
 
-interface AvailabilityPickerProps {
+type AvailabilityPickerProps = {
   sessionId: string;
   productName: string;
   customerEmail?: string | null;
-}
+};
 
 const dayFormatter = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
@@ -197,20 +197,23 @@ export function AvailabilityPicker({
       <div
         className="rounded-(--radius-card) p-8 shadow-(--shadow-warm)"
         style={{
-          background: "var(--color-warm-white)",
-          border: "1px solid var(--color-sand)",
+          background: "var(--color-caya-warm-white)",
+          border: "1px solid var(--color-caya-sand)",
         }}
       >
         <p
           className="mb-4 text-xs uppercase tracking-[0.2em]"
-          style={{ color: "var(--color-clay)", fontFamily: "var(--font-body)" }}
+          style={{
+            color: "var(--color-caya-clay)",
+            fontFamily: "var(--font-body)",
+          }}
         >
           Booking confirmed
         </p>
         <h2
           className="text-4xl"
           style={{
-            color: "var(--color-charcoal)",
+            color: "var(--color-caya-charcoal)",
             fontFamily: "var(--font-display)",
           }}
         >
@@ -219,20 +222,21 @@ export function AvailabilityPicker({
         <p
           className="mt-4 max-w-2xl leading-relaxed"
           style={{
-            color: "var(--color-charcoal-soft)",
+            color: "var(--color-caya-charcoal-soft)",
             fontFamily: "var(--font-body)",
           }}
         >
           Your session has been added to the Come As You Are calendar
           {confirmationEmail?.sent && customerEmail
             ? ` and a confirmation email was sent to ${customerEmail}`
-            : ""}.
+            : ""}
+          .
         </p>
         {confirmationEmail && !confirmationEmail.sent ? (
           <p
             className="mt-4 max-w-2xl leading-relaxed"
             style={{
-              color: "var(--color-clay-dark)",
+              color: "var(--color-caya-clay-dark)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -257,8 +261,8 @@ export function AvailabilityPicker({
     <div
       className="rounded-(--radius-card) p-6 shadow-(--shadow-warm) md:p-8"
       style={{
-        background: "var(--color-warm-white)",
-        border: "1px solid var(--color-sand)",
+        background: "var(--color-caya-warm-white)",
+        border: "1px solid var(--color-caya-sand)",
       }}
     >
       <div className="flex flex-col justify-between gap-6 md:flex-row md:items-start">
@@ -266,7 +270,7 @@ export function AvailabilityPicker({
           <p
             className="mb-3 text-xs uppercase tracking-[0.2em]"
             style={{
-              color: "var(--color-clay)",
+              color: "var(--color-caya-clay)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -275,7 +279,7 @@ export function AvailabilityPicker({
           <h2
             className="text-4xl"
             style={{
-              color: "var(--color-charcoal)",
+              color: "var(--color-caya-charcoal)",
               fontFamily: "var(--font-display)",
             }}
           >
@@ -284,7 +288,7 @@ export function AvailabilityPicker({
           <p
             className="mt-3 max-w-xl leading-relaxed"
             style={{
-              color: "var(--color-charcoal-soft)",
+              color: "var(--color-caya-charcoal-soft)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -298,8 +302,8 @@ export function AvailabilityPicker({
             type="button"
             className="flex min-h-12 w-full items-center justify-between gap-4 rounded-full border px-5 py-3 text-left transition hover:bg-[oklch(88%_0.04_75/0.45)] md:w-64"
             style={{
-              borderColor: "var(--color-sand-deep)",
-              color: "var(--color-charcoal)",
+              borderColor: "var(--color-caya-sand-deep)",
+              color: "var(--color-caya-charcoal)",
               fontFamily: "var(--font-body)",
             }}
             onClick={() => setIsCalendarOpen((open) => !open)}
@@ -312,8 +316,8 @@ export function AvailabilityPicker({
             <div
               className="absolute right-0 z-20 mt-3 w-80 rounded-(--radius-card) p-4 shadow-(--shadow-card)"
               style={{
-                background: "var(--color-warm-white)",
-                border: "1px solid var(--color-sand)",
+                background: "var(--color-caya-warm-white)",
+                border: "1px solid var(--color-caya-sand)",
               }}
             >
               <div className="mb-4 flex items-center justify-between">
@@ -336,7 +340,7 @@ export function AvailabilityPicker({
                 <p
                   className="font-medium"
                   style={{
-                    color: "var(--color-charcoal)",
+                    color: "var(--color-caya-charcoal)",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -365,7 +369,7 @@ export function AvailabilityPicker({
                   <div
                     key={`${day}-${index}`}
                     className="py-2"
-                    style={{ color: "var(--color-charcoal-soft)" }}
+                    style={{ color: "var(--color-caya-charcoal-soft)" }}
                   >
                     {day}
                   </div>
@@ -385,11 +389,11 @@ export function AvailabilityPicker({
                       className="aspect-square rounded-full text-sm transition disabled:cursor-not-allowed disabled:opacity-25"
                       style={{
                         background: isSelected
-                          ? "var(--color-clay)"
+                          ? "var(--color-caya-clay)"
                           : "transparent",
                         color: isSelected
-                          ? "var(--color-warm-white)"
-                          : "var(--color-charcoal)",
+                          ? "var(--color-caya-warm-white)"
+                          : "var(--color-caya-charcoal)",
                       }}
                       onClick={() => {
                         setSelectedDate(dateValue);
@@ -410,14 +414,14 @@ export function AvailabilityPicker({
         <p
           className="mb-4 text-sm font-medium"
           style={{
-            color: "var(--color-charcoal)",
+            color: "var(--color-caya-charcoal)",
             fontFamily: "var(--font-body)",
           }}
         >
           Available times
         </p>
         {isLoading ? (
-          <p style={{ color: "var(--color-charcoal-soft)" }}>
+          <p style={{ color: "var(--color-caya-charcoal-soft)" }}>
             Loading available times...
           </p>
         ) : availability?.slots.length ? (
@@ -431,13 +435,15 @@ export function AvailabilityPicker({
                   type="button"
                   className="rounded-full border px-4 py-3 text-sm font-medium transition hover:scale-[1.02]"
                   style={{
-                    background: selected ? "var(--color-clay)" : "transparent",
+                    background: selected
+                      ? "var(--color-caya-clay)"
+                      : "transparent",
                     borderColor: selected
-                      ? "var(--color-clay)"
-                      : "var(--color-sand-deep)",
+                      ? "var(--color-caya-clay)"
+                      : "var(--color-caya-sand-deep)",
                     color: selected
-                      ? "var(--color-warm-white)"
-                      : "var(--color-charcoal)",
+                      ? "var(--color-caya-warm-white)"
+                      : "var(--color-caya-charcoal)",
                     fontFamily: "var(--font-body)",
                   }}
                   onClick={() => setSelectedSlot(slot)}
@@ -448,7 +454,7 @@ export function AvailabilityPicker({
             })}
           </div>
         ) : (
-          <p style={{ color: "var(--color-charcoal-soft)" }}>
+          <p style={{ color: "var(--color-caya-charcoal-soft)" }}>
             No times are open for this date. Try another day.
           </p>
         )}
@@ -457,7 +463,7 @@ export function AvailabilityPicker({
       {error ? (
         <p
           className="mt-5 leading-relaxed"
-          style={{ color: "var(--color-clay-dark)" }}
+          style={{ color: "var(--color-caya-clay-dark)" }}
         >
           {error}
         </p>
@@ -479,14 +485,14 @@ export function AvailabilityPicker({
           <div
             className="max-h-[90vh] w-full max-w-2xl overflow-auto rounded-(--radius-card) p-7 shadow-(--shadow-warm)"
             style={{
-              background: "var(--color-warm-white)",
-              border: "1px solid var(--color-sand)",
+              background: "var(--color-caya-warm-white)",
+              border: "1px solid var(--color-caya-sand)",
             }}
           >
             <p
               className="mb-4 text-xs uppercase tracking-[0.2em]"
               style={{
-                color: "var(--color-clay)",
+                color: "var(--color-caya-clay)",
                 fontFamily: "var(--font-body)",
               }}
             >
@@ -495,7 +501,7 @@ export function AvailabilityPicker({
             <h2
               className="text-4xl"
               style={{
-                color: "var(--color-charcoal)",
+                color: "var(--color-caya-charcoal)",
                 fontFamily: "var(--font-display)",
               }}
             >
@@ -504,7 +510,7 @@ export function AvailabilityPicker({
             <div
               className="mt-5 space-y-4 leading-relaxed"
               style={{
-                color: "var(--color-charcoal-soft)",
+                color: "var(--color-caya-charcoal-soft)",
                 fontFamily: "var(--font-body)",
               }}
             >
@@ -543,7 +549,7 @@ export function AvailabilityPicker({
               <p
                 className="mt-5 leading-relaxed"
                 style={{
-                  color: "var(--color-clay-dark)",
+                  color: "var(--color-caya-clay-dark)",
                   fontFamily: "var(--font-body)",
                 }}
               >

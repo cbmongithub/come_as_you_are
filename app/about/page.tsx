@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "About — Come As You Are",
@@ -12,154 +13,81 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section
-        className="pt-36 pb-24 relative overflow-hidden"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 50% at 80% 0%, oklch(72% 0.09 38 / 0.12), transparent), var(--color-canvas)",
-        }}
-      >
+      <section className="relative overflow-hidden bg-caya-gradient-about-hero pt-36 pb-24">
         <div className="container-wide max-w-3xl">
-          <p
-            className="text-xs uppercase tracking-[0.2em] mb-4"
-            style={{
-              color: "var(--color-clay)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            Who we are
-          </p>
-          <h1
-            className="text-[clamp(3rem,6vw,5.5rem)] leading-tight mb-6"
-            style={{
-              fontFamily: "var(--font-display)",
-              color: "var(--color-charcoal)",
-            }}
-          >
-            Built by people who needed this.
-            <span
-              className="block italic"
-              style={{ color: "var(--color-clay)" }}
-            >
-              For people who need this.
-            </span>
-          </h1>
-          <p
-            className="text-lg leading-relaxed"
-            style={{
-              color: "var(--color-charcoal-soft)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            Come As You Are isn&apos;t an organization — it&apos;s a response. A
-            community that grew out of lived experience with what it feels like
-            when there&apos;s nowhere to go.
-          </p>
+          <Reveal y={18}>
+            <p className="mb-4 text-xs uppercase tracking-caya-eyebrow font-body text-caya-clay">
+              Who we are
+            </p>
+          </Reveal>
+          <Reveal delay={0.08} y={28}>
+            <h1 className="mb-6 text-caya-display-page leading-tight font-display text-caya-charcoal">
+              Built by people who needed this.
+              <span className="block italic text-caya-clay">
+                For people who need this.
+              </span>
+            </h1>
+          </Reveal>
+          <Reveal delay={0.16} y={24}>
+            <p className="text-lg leading-relaxed font-body text-caya-charcoal-soft">
+              Come As You Are isn&apos;t an organization — it&apos;s a response.
+              A community that grew out of lived experience with what it feels
+              like when there&apos;s nowhere to go.
+            </p>
+          </Reveal>
         </div>
       </section>
-
       {/* Mission */}
-      <section
-        className="section-pad"
-        style={{ background: "var(--color-sand)" }}
-      >
+      <section className="section-pad bg-caya-sand">
         <div className="container-wide">
           <div className="grid md:grid-cols-2 gap-16">
-            <div>
-              <p
-                className="text-xs uppercase tracking-[0.2em] mb-4"
-                style={{
-                  color: "var(--color-clay)",
-                  fontFamily: "var(--font-body)",
-                }}
-              >
-                Our mission
-              </p>
-              <h2
-                className="text-4xl leading-tight mb-6"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  color: "var(--color-charcoal)",
-                }}
-              >
-                To make feeling less alone actually accessible.
-              </h2>
-              <p
-                className="leading-relaxed"
-                style={{
-                  color: "var(--color-charcoal-soft)",
-                  fontFamily: "var(--font-body)",
-                }}
-              >
-                We believe connection is medicine. Not metaphorically — actual
-                peer connection, the kind where you look someone in the eye and
-                know they&apos;ve been there too. We exist to make that
-                available to everyone, regardless of income, diagnosis, or
-                background.
-              </p>
-            </div>
-            <div>
-              <p
-                className="text-xs uppercase tracking-[0.2em] mb-4"
-                style={{
-                  color: "var(--color-clay)",
-                  fontFamily: "var(--font-body)",
-                }}
-              >
-                Our vision
-              </p>
-              <h2
-                className="text-4xl leading-tight mb-6"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  color: "var(--color-charcoal)",
-                }}
-              >
-                A world where everyone has a circle.
-              </h2>
-              <p
-                className="leading-relaxed"
-                style={{
-                  color: "var(--color-charcoal-soft)",
-                  fontFamily: "var(--font-body)",
-                }}
-              >
-                Our long-term vision is a network of peer wellness spaces in
-                every city — community-run, trauma-informed, and radically
-                welcoming. We&apos;re starting with one space. But this is meant
-                to grow.
-              </p>
-            </div>
+            <Reveal y={24}>
+              <div>
+                <p className="mb-4 text-xs uppercase tracking-caya-eyebrow font-body text-caya-clay">
+                  Our mission
+                </p>
+                <h2 className="mb-6 text-4xl leading-tight font-display text-caya-charcoal">
+                  To make feeling less alone actually accessible.
+                </h2>
+                <p className="leading-relaxed font-body text-caya-charcoal-soft">
+                  We believe connection is medicine. Not metaphorically — actual
+                  peer connection, the kind where you look someone in the eye
+                  and know they&apos;ve been there too. We exist to make that
+                  available to everyone, regardless of income, diagnosis, or
+                  background.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.08} y={24}>
+              <div>
+                <p className="mb-4 text-xs uppercase tracking-caya-eyebrow font-body text-caya-clay">
+                  Our vision
+                </p>
+                <h2 className="mb-6 text-4xl leading-tight font-display text-caya-charcoal">
+                  A world where everyone has a circle.
+                </h2>
+                <p className="leading-relaxed font-body text-caya-charcoal-soft">
+                  Our long-term vision is a network of peer wellness spaces in
+                  every city — community-run, trauma-informed, and radically
+                  welcoming. We&apos;re starting with one space. But this is
+                  meant to grow.
+                </p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
-
       {/* Philosophy */}
-      <section
-        className="section-pad"
-        style={{ background: "var(--color-canvas)" }}
-      >
+      <section className="section-pad bg-caya-canvas">
         <div className="container-wide">
-          <div className="max-w-2xl mx-auto text-center mb-16">
-            <p
-              className="text-xs uppercase tracking-[0.2em] mb-4"
-              style={{
-                color: "var(--color-clay)",
-                fontFamily: "var(--font-body)",
-              }}
-            >
+          <Reveal className="mx-auto mb-16 max-w-2xl text-center" y={22}>
+            <p className="mb-4 text-xs uppercase tracking-caya-eyebrow font-body text-caya-clay">
               How we do things
             </p>
-            <h2
-              className="text-4xl"
-              style={{
-                fontFamily: "var(--font-display)",
-                color: "var(--color-charcoal)",
-              }}
-            >
+            <h2 className="text-4xl font-display text-caya-charcoal">
               Our philosophy
             </h2>
-          </div>
+          </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
@@ -186,70 +114,39 @@ export default function AboutPage() {
                 title: "Joy is welcome too",
                 body: "This isn't only a space for suffering. Laughter, lightness, and hope are part of healing too.",
               },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="p-7 rounded-(--radius-card)"
-                style={{
-                  background: "var(--color-warm-white)",
-                  border: "1px solid var(--color-sand)",
-                }}
-              >
-                <h3
-                  className="text-xl mb-3"
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    color: "var(--color-charcoal)",
-                  }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{
-                    color: "var(--color-charcoal-soft)",
-                    fontFamily: "var(--font-body)",
-                  }}
-                >
-                  {item.body}
-                </p>
-              </div>
+            ].map((item, index) => (
+              <Reveal key={item.title} delay={0.04 * index} y={22}>
+                <div className="rounded-(--radius-card) border border-caya-sand bg-caya-warm-white p-7">
+                  <h3 className="mb-3 text-xl font-display text-caya-charcoal">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed font-body text-caya-charcoal-soft">
+                    {item.body}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
-
+      //todo: comment out this story timeline for now.
       {/* Story timeline */}
-      <section
-        className="section-pad"
-        style={{ background: "var(--color-charcoal)" }}
-      >
+      <section className="section-pad bg-caya-charcoal">
         <div className="container-wide">
           <div className="max-w-2xl mx-auto">
-            <p
-              className="text-xs uppercase tracking-[0.2em] mb-4 text-center"
-              style={{
-                color: "var(--color-clay-light)",
-                fontFamily: "var(--font-body)",
-              }}
-            >
-              Our story
-            </p>
-            <h2
-              className="text-4xl text-center mb-16"
-              style={{
-                fontFamily: "var(--font-display)",
-                color: "var(--color-sand)",
-              }}
-            >
-              How it began
-            </h2>
+            <Reveal y={16}>
+              <p className="mb-4 text-center text-xs uppercase tracking-caya-eyebrow font-body text-caya-clay-light">
+                Our story
+              </p>
+            </Reveal>
+            <Reveal delay={0.08} y={22}>
+              <h2 className="mb-16 text-center text-4xl font-display text-caya-sand">
+                How it began
+              </h2>
+            </Reveal>
             <div className="relative">
               {/* Timeline line */}
-              <div
-                className="absolute left-5 top-0 bottom-0 w-px"
-                style={{ background: "oklch(88% 0.04 75 / 0.15)" }}
-              />
+              <div className="absolute bottom-0 left-5 top-0 w-px bg-caya-sand-15" />
               <div className="flex flex-col gap-12">
                 {[
                   {
@@ -277,66 +174,44 @@ export default function AboutPage() {
                     event:
                       "Hundreds of community members. Weekly sessions. A waitlist. And a model beginning to replicate in other cities.",
                   },
-                ].map(({ year, event }) => (
-                  <div key={year} className="flex gap-8 pl-14 relative">
-                    <div
-                      className="absolute left-3 top-2 w-4 h-4 rounded-full border-2 -translate-x-1/2"
-                      style={{
-                        background: "var(--color-clay)",
-                        borderColor: "var(--color-charcoal)",
-                      }}
-                    />
-                    <div>
-                      <p
-                        className="text-sm font-semibold mb-1"
-                        style={{
-                          color: "var(--color-clay-light)",
-                          fontFamily: "var(--font-body)",
-                        }}
-                      >
-                        {year}
-                      </p>
-                      <p
-                        className="text-sm leading-relaxed"
-                        style={{
-                          color: "oklch(88% 0.04 75 / 0.6)",
-                          fontFamily: "var(--font-body)",
-                        }}
-                      >
-                        {event}
-                      </p>
+                ].map(({ year, event }, index) => (
+                  <Reveal key={year} delay={0.05 * index} y={20}>
+                    <div className="relative flex gap-8 pl-14">
+                      <div className="absolute left-3 top-2 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-caya-charcoal bg-caya-clay" />
+                      <div>
+                        <p className="mb-1 text-sm font-semibold font-body text-caya-clay-light">
+                          {year}
+                        </p>
+                        <p className="text-sm leading-relaxed font-body text-caya-sand-60">
+                          {event}
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
           </div>
         </div>
       </section>
-
       {/* CTA */}
-      <section
-        className="section-pad"
-        style={{ background: "var(--color-canvas)" }}
-      >
+      <section className="section-pad bg-caya-canvas">
         <div className="container-wide text-center">
-          <h2
-            className="text-4xl mb-6"
-            style={{
-              fontFamily: "var(--font-display)",
-              color: "var(--color-charcoal)",
-            }}
-          >
-            Be part of what comes next.
-          </h2>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <Button size="lg" asChild>
-              <Link href="/programs">Join a Session</Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/support">Support the Space</Link>
-            </Button>
-          </div>
+          <Reveal y={20}>
+            <h2 className="mb-6 text-4xl font-display text-caya-charcoal">
+              Be part of what comes next.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.08} y={18}>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button size="lg" asChild>
+                <Link href="/programs">Join a Session</Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/support">Support the Space</Link>
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

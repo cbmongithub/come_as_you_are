@@ -2,18 +2,28 @@
 
 @theme {
   /* OKLCH Color System */
-  --color-canvas: oklch(97% 0.012 60);
-  --color-clay: oklch(55% 0.12 38);
-  --color-clay-light: oklch(72% 0.09 38);
-  --color-clay-dark: oklch(42% 0.1 38);
-  --color-sand: oklch(88% 0.04 75);
-  --color-sand-deep: oklch(80% 0.06 72);
-  --color-sage: oklch(62% 0.07 155);
-  --color-sage-light: oklch(82% 0.05 155);
-  --color-charcoal: oklch(22% 0.02 60);
-  --color-charcoal-soft: oklch(38% 0.02 60);
-  --color-warm-white: oklch(99% 0.005 80);
-  --color-mist: oklch(93% 0.015 200);
+  --color-caya-canvas: oklch(97% 0.012 60);
+  --color-caya-clay: oklch(55% 0.12 38);
+  --color-caya-clay-light: oklch(72% 0.09 38);
+  --color-caya-clay-dark: oklch(42% 0.1 38);
+  --color-caya-sand: oklch(88% 0.04 75);
+  --color-caya-sand-deep: oklch(80% 0.06 72);
+  --color-caya-sage: oklch(62% 0.07 155);
+  --color-caya-sage-light: oklch(82% 0.05 155);
+  --color-caya-charcoal: oklch(22% 0.02 60);
+  --color-caya-charcoal-soft: oklch(38% 0.02 60);
+  --color-caya-warm-white: oklch(99% 0.005 80);
+  --color-caya-mist: oklch(93% 0.015 200);
+  --color-caya-mist-dark: oklch(42% 0.08 200);
+  --color-caya-mist-mid: oklch(55% 0.1 200);
+  --color-caya-gold: oklch(58% 0.11 90);
+  --color-caya-gold-dark: oklch(40% 0.09 90);
+  --color-caya-earth: oklch(55% 0.08 75);
+  --color-caya-earth-dark: oklch(38% 0.06 75);
+  --color-caya-terra: oklch(40% 0.08 45);
+  --color-caya-terra-mid: oklch(55% 0.1 45);
+  --color-caya-alert: oklch(55% 0.15 15);
+  --color-caya-warning: oklch(55% 0.12 55);
 
   /* Typography */
   --font-display: "Cormorant Garamond", "Georgia", serif;
@@ -47,8 +57,8 @@
   }
 
   body {
-    background-color: var(--color-canvas);
-    color: var(--color-charcoal);
+    background-color: var(--color-caya-canvas);
+    color: var(--color-caya-charcoal);
     font-family: var(--font-body);
     font-size: 1rem;
     line-height: 1.7;
@@ -66,23 +76,31 @@
   }
 
   ::selection {
-    background: var(--color-clay-light);
-    color: var(--color-warm-white);
+    background: var(--color-caya-clay-light);
+    color: var(--color-caya-warm-white);
   }
 
   ::-webkit-scrollbar {
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-sand);
+    background: var(--color-caya-sand);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-clay-light);
+    background: var(--color-caya-clay-light);
     border-radius: 3px;
   }
 }
 
 @layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
   .text-display {
     font-family: var(--font-display);
   }
@@ -103,6 +121,533 @@
   .section-pad {
     padding-top: var(--spacing-section);
     padding-bottom: var(--spacing-section);
+  }
+
+  .bg-caya-canvas {
+    background-color: var(--color-caya-canvas);
+  }
+
+  .bg-caya-sand {
+    background-color: var(--color-caya-sand);
+  }
+
+  .bg-caya-charcoal {
+    background-color: var(--color-caya-charcoal);
+  }
+
+  .bg-caya-clay {
+    background-color: var(--color-caya-clay);
+  }
+
+  .bg-caya-earth {
+    background-color: var(--color-caya-earth);
+  }
+
+  .bg-caya-terra-mid {
+    background-color: var(--color-caya-terra-mid);
+  }
+
+  .bg-caya-warm-white {
+    background-color: var(--color-caya-warm-white);
+  }
+
+  .bg-caya-sage-light {
+    background-color: var(--color-caya-sage-light);
+  }
+
+  .text-caya-warm-white {
+    color: var(--color-caya-warm-white);
+  }
+
+  .text-caya-charcoal {
+    color: var(--color-caya-charcoal);
+  }
+
+  .text-caya-charcoal-soft {
+    color: var(--color-caya-charcoal-soft);
+  }
+
+  .text-caya-sand {
+    color: var(--color-caya-sand);
+  }
+
+  .text-caya-clay {
+    color: var(--color-caya-clay);
+  }
+
+  .text-caya-clay-light {
+    color: var(--color-caya-clay-light);
+  }
+
+  .text-caya-clay-dark {
+    color: var(--color-caya-clay-dark);
+  }
+
+  .text-caya-sage {
+    color: var(--color-caya-sage);
+  }
+
+  .text-caya-mist-dark {
+    color: var(--color-caya-mist-dark);
+  }
+
+  .text-caya-gold {
+    color: var(--color-caya-gold);
+  }
+
+  .text-caya-gold-dark {
+    color: var(--color-caya-gold-dark);
+  }
+
+  .text-caya-earth {
+    color: var(--color-caya-earth);
+  }
+
+  .text-caya-earth-dark {
+    color: var(--color-caya-earth-dark);
+  }
+
+  .text-caya-terra {
+    color: var(--color-caya-terra);
+  }
+
+  .text-caya-alert {
+    color: var(--color-caya-alert);
+  }
+
+  .text-caya-warning {
+    color: var(--color-caya-warning);
+  }
+
+  .border-caya-sand {
+    border-color: var(--color-caya-sand);
+  }
+
+  .border-caya-sand-deep {
+    border-color: var(--color-caya-sand-deep);
+  }
+
+  .border-caya-clay {
+    border-color: var(--color-caya-clay);
+  }
+
+  .border-caya-white-20 {
+    border-color: oklch(99% 0.005 80 / 0.2);
+  }
+
+  .border-caya-white-55 {
+    border-color: oklch(99% 0.005 80 / 0.55);
+  }
+
+  .border-caya-white-65 {
+    border-color: oklch(99% 0.005 80 / 0.65);
+  }
+
+  .text-caya-sand-60 {
+    color: oklch(88% 0.04 75 / 0.6);
+  }
+
+  .text-caya-sand-50 {
+    color: oklch(88% 0.04 75 / 0.5);
+  }
+
+  .text-caya-sand-40 {
+    color: oklch(88% 0.04 75 / 0.4);
+  }
+
+  .text-caya-sand-35 {
+    color: oklch(88% 0.04 75 / 0.35);
+  }
+
+  .text-caya-sand-72 {
+    color: oklch(88% 0.04 75 / 0.72);
+  }
+
+  .text-caya-warm-white-90 {
+    color: oklch(99% 0.005 80 / 0.9);
+  }
+
+  .text-caya-warm-white-86 {
+    color: oklch(96% 0.015 80 / 0.86);
+  }
+
+  .text-caya-warm-white-66 {
+    color: oklch(96% 0.015 80 / 0.66);
+  }
+
+  .text-caya-warm-white-62 {
+    color: oklch(96% 0.015 80 / 0.62);
+  }
+
+  .text-caya-warm-white-70 {
+    color: oklch(99% 0.005 80 / 0.7);
+  }
+
+  .text-caya-charcoal-70 {
+    color: oklch(38% 0.02 60 / 0.7);
+  }
+
+  .text-caya-charcoal-75 {
+    color: oklch(38% 0.02 60 / 0.75);
+  }
+
+  .bg-caya-sand-10 {
+    background-color: oklch(88% 0.04 75 / 0.1);
+  }
+
+  .bg-caya-sand-12 {
+    background-color: oklch(88% 0.04 75 / 0.12);
+  }
+
+  .bg-caya-sand-15 {
+    background-color: oklch(88% 0.04 75 / 0.15);
+  }
+
+  .bg-caya-clay-15 {
+    background-color: oklch(55% 0.12 38 / 0.15);
+  }
+
+  .bg-caya-clay-8 {
+    background-color: oklch(55% 0.12 38 / 0.08);
+  }
+
+  .bg-caya-sand-5 {
+    background-color: oklch(88% 0.04 75 / 0.05);
+  }
+
+  .bg-caya-sand-45 {
+    background-color: oklch(88% 0.04 75 / 0.45);
+  }
+
+  .bg-caya-sand-50 {
+    background-color: oklch(88% 0.04 75 / 0.5);
+  }
+
+  .bg-caya-sand-60 {
+    background-color: oklch(88% 0.04 75 / 0.6);
+  }
+
+  .bg-caya-sand-80 {
+    background-color: oklch(88% 0.04 75 / 0.8);
+  }
+
+  .bg-caya-sage-30 {
+    background-color: oklch(82% 0.05 155 / 0.3);
+  }
+
+  .bg-caya-sage-40 {
+    background-color: oklch(82% 0.05 155 / 0.4);
+  }
+
+  .bg-caya-clay-soft {
+    background-color: oklch(72% 0.09 38 / 0.15);
+  }
+
+  .bg-caya-gold-soft {
+    background-color: oklch(90% 0.05 90 / 0.4);
+  }
+
+  .bg-caya-gold-soft-strong {
+    background-color: oklch(90% 0.05 90 / 0.5);
+  }
+
+  .bg-caya-mist-soft {
+    background-color: oklch(93% 0.015 200 / 0.6);
+  }
+
+  .bg-caya-terra-soft {
+    background-color: oklch(85% 0.06 45 / 0.4);
+  }
+
+  .bg-caya-canvas-95 {
+    background-color: oklch(97% 0.012 60 / 0.95);
+  }
+
+  .bg-caya-warm-white-13 {
+    background-color: oklch(99% 0.005 80 / 0.13);
+  }
+
+  .bg-caya-warm-white-58 {
+    background-color: oklch(99% 0.005 80 / 0.58);
+  }
+
+  .bg-caya-warm-white-70 {
+    background-color: oklch(99% 0.005 80 / 0.7);
+  }
+
+  .border-caya-sand-10 {
+    border-color: oklch(88% 0.04 75 / 0.1);
+  }
+
+  .border-caya-sand-20 {
+    border-color: oklch(88% 0.04 75 / 0.2);
+  }
+
+  .border-caya-clay-30 {
+    border-color: oklch(55% 0.12 38 / 0.3);
+  }
+
+  .border-caya-sand-8 {
+    border-color: oklch(88% 0.04 75 / 0.08);
+  }
+
+  .border-caya-sand-18 {
+    border-color: oklch(88% 0.04 75 / 0.18);
+  }
+
+  .border-caya-charcoal-6 {
+    border-color: oklch(22% 0.02 60 / 0.06);
+  }
+
+  .bg-caya-navbar-solid {
+    background-color: oklch(97% 0.012 60 / 0.95);
+  }
+
+  .bg-caya-cta-glow {
+    height: 400px;
+    width: 800px;
+    background-color: var(--color-caya-clay);
+    opacity: 0.2;
+    filter: blur(140px);
+  }
+
+  .shadow-caya-navbar {
+    box-shadow: 0 1px 0 oklch(100% 0.12 38 / 0.1);
+  }
+
+  .shadow-caya-button {
+    box-shadow: 0 4px 20px oklch(55% 0.12 38 / 0.3);
+  }
+
+  .shadow-caya-portrait {
+    box-shadow: 0 18px 60px oklch(22% 0.02 60 / 0.24);
+  }
+
+  .shadow-caya-check {
+    box-shadow: 0 6px 16px oklch(22% 0.02 60 / 0.16);
+  }
+
+  .backdrop-blur-caya {
+    backdrop-filter: blur(12px);
+  }
+
+  .backdrop-blur-caya-soft {
+    backdrop-filter: blur(2px);
+  }
+
+  .text-shadow-caya-hero {
+    text-shadow: 0 3px 36px oklch(10% 0.02 60 / 0.35);
+  }
+
+  .text-caya-micro {
+    font-size: 0.625rem;
+  }
+
+  .text-caya-2xs {
+    font-size: 0.6875rem;
+  }
+
+  .tracking-caya-label {
+    letter-spacing: 0.15em;
+  }
+
+  .tracking-caya-kicker {
+    letter-spacing: 0.18em;
+  }
+
+  .tracking-caya-eyebrow {
+    letter-spacing: 0.2em;
+  }
+
+  .text-caya-display-hero {
+    font-size: clamp(3.5rem, 8vw, 7rem);
+  }
+
+  .text-caya-display-page {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+  }
+
+  .text-caya-display-lg {
+    font-size: clamp(2.5rem, 5vw, 4.75rem);
+  }
+
+  .text-caya-display-md {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .text-caya-heading-xl {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .text-caya-heading-lg {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+  }
+
+  .bg-caya-gradient-canvas-sand {
+    background: linear-gradient(
+      to bottom,
+      var(--color-caya-canvas),
+      var(--color-caya-sand)
+    );
+  }
+
+  .bg-caya-gradient-canvas-mist {
+    background: linear-gradient(
+      to bottom,
+      var(--color-caya-canvas),
+      oklch(93% 0.015 200 / 0.3)
+    );
+  }
+
+  .bg-caya-gradient-solution-card {
+    background: linear-gradient(
+      135deg,
+      var(--color-caya-sand) 0%,
+      var(--color-caya-clay-light) 50%,
+      var(--color-caya-sage-light) 100%
+    );
+  }
+
+  .bg-caya-gradient-member-overlay {
+    background: linear-gradient(
+      180deg,
+      transparent 48%,
+      oklch(22% 0.02 60 / 0.26) 100%
+    );
+  }
+
+  .bg-caya-testimonial-panel {
+    background:
+      linear-gradient(
+        180deg,
+        oklch(22% 0.02 60 / 0) 0%,
+        oklch(22% 0.02 60 / 0.14) 18%,
+        oklch(22% 0.02 60 / 0.82) 100%
+      );
+  }
+
+  .bg-caya-gradient-about-hero {
+    background:
+      radial-gradient(
+        ellipse 60% 50% at 80% 0%,
+        oklch(72% 0.09 38 / 0.12),
+        transparent
+      ),
+      var(--color-caya-canvas);
+  }
+
+  .bg-caya-gradient-events-hero {
+    background:
+      radial-gradient(
+        ellipse 70% 50% at 20% 0%,
+        oklch(88% 0.04 75 / 0.3),
+        transparent
+      ),
+      var(--color-caya-canvas);
+  }
+
+  .bg-caya-gradient-programs-hero {
+    background:
+      radial-gradient(
+        ellipse 70% 50% at 30% 0%,
+        oklch(62% 0.07 155 / 0.12),
+        transparent
+      ),
+      var(--color-caya-canvas);
+  }
+
+  .bg-caya-event-fallback {
+    background:
+      radial-gradient(
+        circle at 40% 40%,
+        oklch(0% 0.4 38 / 0.3),
+        transparent
+      ),
+      oklch(88% 0.04 75 / 0.05);
+  }
+
+  .hover-scale-caya {
+    transition-property: transform;
+  }
+
+  .hover-scale-caya:hover {
+    transform: scale(1.02);
+  }
+
+  .bg-caya-navbar-overlay {
+    background: linear-gradient(
+      180deg,
+      oklch(22% 0.02 60 / 0.68) 0%,
+      oklch(22% 0.02 60 / 0.42) 62%,
+      transparent 100%
+    );
+  }
+
+  .bg-caya-hero-overlay {
+    background:
+      linear-gradient(180deg, oklch(22% 0.02 60 / 0.22) 0%, transparent 26%),
+      linear-gradient(
+        90deg,
+        oklch(18% 0.025 60 / 0.82) 0%,
+        oklch(18% 0.025 60 / 0.62) 38%,
+        oklch(18% 0.025 60 / 0.26) 70%,
+        oklch(18% 0.025 60 / 0.12) 100%
+      );
+  }
+
+  .bg-caya-footer-rule {
+    background: linear-gradient(
+      90deg,
+      oklch(55% 0.12 38 / 0) 0%,
+      oklch(55% 0.12 38 / 0.18) 18%,
+      oklch(55% 0.12 38 / 0.38) 50%,
+      oklch(55% 0.12 38 / 0.18) 82%,
+      oklch(55% 0.12 38 / 0) 100%
+    );
+  }
+
+  .bg-caya-vertical-rule {
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      oklch(88% 0.04 75 / 0.5),
+      transparent
+    );
+  }
+
+  .bg-caya-modal-overlay {
+    background-color: oklch(22% 0.02 60 / 0.4);
+  }
+
+  .border-caya-soft-top {
+    border-top-color: oklch(88% 0.04 75 / 0.1);
+  }
+
+  .hover\:text-caya-clay:hover,
+  .hover\:text-clay:hover {
+    color: var(--color-caya-clay);
+  }
+
+  .hover\:text-caya-clay-light:hover,
+  .hover\:text-clay-light:hover {
+    color: var(--color-caya-clay-light);
+  }
+
+  .group:hover .group-hover\:text-caya-clay,
+  .group:hover .group-hover\:text-clay {
+    color: var(--color-caya-clay);
+  }
+
+  .text-sand {
+    color: var(--color-caya-sand);
+  }
+
+  .text-warm-white {
+    color: var(--color-caya-warm-white);
+  }
+
+  .bg-clay-light {
+    background-color: var(--color-caya-clay-light);
   }
 
   .grain-overlay::after {
